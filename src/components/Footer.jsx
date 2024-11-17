@@ -1,1 +1,1 @@
-// Footer 작업
+// Footer
