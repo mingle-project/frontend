@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 
 export const Container = styled.div`
   position: relative;
@@ -8,8 +8,8 @@ export const Container = styled.div`
   margin-top: 0px;
   background-color: #d9d9d9;
   min-height: 100vh;
-  padding: 0; /* 불필요한 패딩 제거 */
-  box-sizing: border-box; /* 패딩이 width에 포함되도록 설정 */
+  padding: 0;
+  box-sizing: border-box;
   align-items: center;
   justify-content: center;
   text-align: center;

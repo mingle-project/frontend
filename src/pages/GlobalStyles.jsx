@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -18,6 +18,14 @@ const GlobalStyle = createGlobalStyle`
   #root {
     height: 100%;  /* React의 루트 요소도 100%로 설정 */
   }
+
+  @font-face {
+  font-family: 'MaplestoryOTFBold';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  }
+
 `;
 
 export default GlobalStyle;
