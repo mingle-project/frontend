@@ -9,6 +9,9 @@ import IntroFooter from "./components/IntroductionFooter";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Header1 from "./components/Header1";
+import Book from "./pages/Book";
+import BookItem from "./pages/BookItem";
+import StoreItem from "./pages/StoreItem";
 
 function App() {
   return (
@@ -19,6 +22,9 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/book" element={<Book />} />
+        <Route path="/bookitem" element={<BookItem />} />
+        <Route path="/storeitem" element={<StoreItem />} />
       </Routes>
     </BrowserRouter>
   );
