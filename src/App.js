@@ -13,13 +13,11 @@ import Main from "./pages/Main";
 import Header1 from "./components/Header1";
 import QuestionList from "./pages/QuestionList";
 import Minformation from "./pages/MemberInformation";
-import Footer from "./components/Footer";
 
 function App() {
   return (
     <BrowserRouter>
       <GlobalStyle />
-      <Footer />
       <Routes>
         <Route path="/introduction" element={<Introduction />} />
         <Route path="/introduction2" element={<Introduction2 />} />
