@@ -1,4 +1,3 @@
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Landing from "./pages/Landing";
 import GlobalStyle from "./pages/GlobalStyles";
@@ -13,8 +12,8 @@ import Grouping from "./pages/Grouping";
 import Main from "./pages/Main";
 import Header1 from "./components/Header1";
 import QuestionList from "./pages/QuestionList";
-import Minformation from './pages/MemberInformation';
-
+import Minformation from "./pages/MemberInformation";
+/*fdfdsf*/
 
 function App() {
   return (

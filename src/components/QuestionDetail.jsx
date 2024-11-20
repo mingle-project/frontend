@@ -33,6 +33,7 @@ const QuestionDetail = () => {
     "sdffffffffffffffffffff",
     "dfsssssssssssss",
     "dfsssssss",
+    "rrrrr",
   ];
 
   const Date = ["24-08-12", "24-06-21", "24-05-05", "24-05-01", "24-04-30"];
@@ -52,16 +53,16 @@ const QuestionDetail = () => {
                 id={image.id}
                 src={image.src}
                 alt={image.id}
+                style={{ height: "25px", width: "25px" }}
               />
             </Q.MainImg>
 
             <Q.QuestionText>
-              <p>{question}</p>
+              <p style={{ display: "inline" }}>{question}</p>
+              <p id="date" style={{ display: "inline", marginLeft: "10px" }}>
+                {Date[index]}
+              </p>
             </Q.QuestionText>
-
-            <Q.Date>
-              <p>{Date[index]}</p>
-            </Q.Date>
           </div>
         );
       })}
