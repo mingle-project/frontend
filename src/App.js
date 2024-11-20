@@ -12,9 +12,11 @@ import SignUp from "./pages/SignUp";
 import Grouping from "./pages/Grouping";
 import Main from "./pages/Main";
 import Header1 from "./components/Header1";
+import Book from "./pages/Book";
+import BookItem from "./pages/BookItem";
+import StoreItem from "./pages/StoreItem";
 import QuestionList from "./pages/QuestionList";
 import Minformation from './pages/MemberInformation';
-
 
 function App() {
   return (
@@ -27,6 +29,9 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/book" element={<Book />} />
+        <Route path="/bookitem" element={<BookItem />} />
+        <Route path="/storeitem" element={<StoreItem />} />
         <Route path="/grouping" element={<Grouping />} />
         <Route path="/main" element={<Main />} />
         <Route path="/questionlist" element={<QuestionList />} />

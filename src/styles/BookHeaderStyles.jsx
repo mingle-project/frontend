@@ -14,7 +14,7 @@ export const Container = styled.div`
   justify-content: center;
 `;
 
-export const Arrow = styled.div`
+export const Hanger = styled.div`
   position: absolute;
   transform: translateX(-450%);
   margin: 0 auto;
@@ -46,22 +46,5 @@ export const MingleLogo = styled.div`
     height: 75px;
     display: block;
     margin: 0;
-  }
-`;
-
-export const Hanger = styled.div`
-  position: absolute;
-  transform: translateX(-450%);
-  margin: 0 auto;
-  margin-top: 7%;
-  padding: 0;
-  box-sizing: border-box;
-  align-items: center;
-  justify-content: flex-start;
-  text-align: center;
-  img {
-    width: 32px;
-    height: auto;
-    margin-top: 8%;
   }
 `;
