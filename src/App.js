@@ -15,8 +15,12 @@ import Header1 from "./components/Header1";
 import Book from "./pages/Book";
 import BookItem from "./pages/BookItem";
 import StoreItem from "./pages/StoreItem";
+<<<<<<< HEAD
+import Answer from "./pages/Answer";
+=======
 import QuestionList from "./pages/QuestionList";
 import Minformation from './pages/MemberInformation';
+>>>>>>> bf596ee77d54ed25db22c78f8bba768db230c6eb
 
 function App() {
   return (
@@ -32,10 +36,14 @@ function App() {
         <Route path="/book" element={<Book />} />
         <Route path="/bookitem" element={<BookItem />} />
         <Route path="/storeitem" element={<StoreItem />} />
+<<<<<<< HEAD
+        <Route path="/answer" element={<Answer />} />
+=======
         <Route path="/grouping" element={<Grouping />} />
         <Route path="/main" element={<Main />} />
         <Route path="/questionlist" element={<QuestionList />} />
         <Route path="/memberinformation" element={<Minformation />} />
+>>>>>>> bf596ee77d54ed25db22c78f8bba768db230c6eb
       </Routes>
     </BrowserRouter>
   );
