@@ -12,6 +12,7 @@ import Header1 from "./components/Header1";
 import Book from "./pages/Book";
 import BookItem from "./pages/BookItem";
 import StoreItem from "./pages/StoreItem";
+import Answer from "./pages/Answer";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/book" element={<Book />} />
         <Route path="/bookitem" element={<BookItem />} />
         <Route path="/storeitem" element={<StoreItem />} />
+        <Route path="/answer" element={<Answer />} />
       </Routes>
     </BrowserRouter>
   );
