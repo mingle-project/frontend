@@ -5,11 +5,19 @@ import Arrow from '../assets/arrow.png';
 import Set from '../assets/set.png';
 import MingleLogo from '../assets/minglelogowhite1.png';
 import Pencil from '../assets/pencil.png';
+import Help from '../assets/help.png';
+import Computer from '../assets/computer.png';
+import Logout from '../assets/logout.png';
+import Delete from '../assets/delete.png';
+import Line from '../assets/line.png';
 
 const MemberInformation = () => {
   const [isInvitePopupOpen, setIsInvitePopupOpen] = useState(false);
   const [isGroupPopupOpen, setIsGroupPopupOpen] = useState(false);
   const [isNamePopupOpen, setIsNamePopupOpen] = useState(false);
+  const [isSetPopupOpen, setIsSetPopupOpen] = useState(false);
+  const [isOutPopupOpen, setIsOutPopupOpen] = useState(false);
+  const [isDeletePopupOpen, setIsDeletePopupOpen] = useState(false);
 
   const handleInviteClick = () => {
     setIsInvitePopupOpen(true);
@@ -35,6 +43,30 @@ const MemberInformation = () => {
     setIsNamePopupOpen(false);
   };
 
+  const handleSetClick = () => {
+    setIsSetPopupOpen(true);
+  };
+
+  const handleSetClosePopup = () => {
+    setIsSetPopupOpen(false);
+  };
+
+  const handleOutClick = () => {
+    setIsOutPopupOpen(true);
+  };
+
+  const handleOutClosePopup = () => {
+    setIsOutPopupOpen(false);
+  };
+
+  const handleDeleteClick = () => {
+    setIsDeletePopupOpen(true);
+  };
+
+  const handleDeleteClosePopup = () => {
+    setIsDeletePopupOpen(false);
+  };
+
   const handleCopyCode = () => {
     const groupCode = 'GD88YB';
     navigator.clipboard
@@ -54,7 +86,9 @@ const MemberInformation = () => {
           <img id="Arrow" src={Arrow} />
         </M.Arrow>
         <M.Set>
-          <img id="Set" src={Set} />
+          <M.SetChange onClick={handleSetClick}>
+            <img id="Set" src={Set} />
+          </M.SetChange>
         </M.Set>
       </M.Header>
       <M.Body>
@@ -117,6 +151,95 @@ const MemberInformation = () => {
         <M.ButtonLogout onClick={() => console.log('로그아웃 버튼 클릭')}>
           로그아웃
         </M.ButtonLogout>
+
+        {isSetPopupOpen && (
+          <M.SetPopup>
+            <M.SetPopupHelp>
+              <p>도움말</p>
+              <img id="Help" src={Help} />
+            </M.SetPopupHelp>
+            <M.SetPopupIntroduction>
+              <p>프로젝트 소개</p>
+              <img id="Computer" src={Computer} />
+            </M.SetPopupIntroduction>
+            {/* <M.SetPopupLine>
+              <img id="Line" src={Line} />
+            </M.SetPopupLine> */}
+            {/* <M.SetPopupOut onClick={handleOutClick}> */}
+            <M.SetPopupOut
+              onClick={() => {
+                handleSetClosePopup();
+                handleOutClick();
+              }}
+            >
+              <p>그룹 나가기</p>
+              <img id="Logout" src={Logout} />
+            </M.SetPopupOut>
+            <M.SetPopupDelete
+              onClick={() => {
+                handleSetClosePopup();
+                handleDeleteClick();
+              }}
+            >
+              <p>그룹 삭제</p>
+              <img id="Delete" src={Delete} />
+            </M.SetPopupDelete>
+            <M.SetPopup2>
+              <M.SetCloseButton onClick={handleSetClosePopup}>
+                취소
+              </M.SetCloseButton>
+            </M.SetPopup2>
+          </M.SetPopup>
+        )}
+
+        {isOutPopupOpen && (
+          <M.OutPopup>
+            <M.OutPopupTitle>
+              <p>그룹을 떠나시나요?</p>
+            </M.OutPopupTitle>
+            <M.OutPopupMiddle>
+              <M.OutPopupSmall1>
+                <p>그룹을 나가면 더 이상</p>
+                <p>그룹 활동에 참여할 수 없으며,</p>
+              </M.OutPopupSmall1>
+              <M.OutPopupSmall2>
+                <p>그룹 내에서 공유된 데이터에</p>
+                <p>접근할 수 없습니다.</p>
+              </M.OutPopupSmall2>
+            </M.OutPopupMiddle>
+            <M.OutPopup2>
+              <M.OutCloseButton onClick={handleOutClosePopup}>
+                취소
+              </M.OutCloseButton>
+              <M.OutDeleteButton>나가기</M.OutDeleteButton>
+            </M.OutPopup2>
+          </M.OutPopup>
+        )}
+
+        {isDeletePopupOpen && (
+          <M.DeletePopup>
+            <M.DeletePopupTitle>
+              <p>그룹을 삭제하시겠어요?</p>
+            </M.DeletePopupTitle>
+            <M.DeletePopupMiddle>
+              <M.DeletePopupSmall1>
+                <p>그룹 삭제 시 그룹과 관련된</p>
+                <p>모든 데이터와 기록이 영구 삭제됩니다.</p>
+              </M.DeletePopupSmall1>
+              <M.DeletePopupSmall2>
+                <p>삭제를 확인하려면</p>
+                <p>아래에 그룹 이름을 입력해 주세요</p>
+              </M.DeletePopupSmall2>
+              <M.TextInput type="text" placeholder="그룹 이름 입력" />
+            </M.DeletePopupMiddle>
+            <M.DeletePopup2>
+              <M.DeleteCloseButton onClick={handleDeleteClosePopup}>
+                취소
+              </M.DeleteCloseButton>
+              <M.DeleteDeleteButton>삭제</M.DeleteDeleteButton>
+            </M.DeletePopup2>
+          </M.DeletePopup>
+        )}
 
         {isGroupPopupOpen && (
           <M.GroupPopup>
