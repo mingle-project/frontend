@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
 import * as M from '../styles/MemberInformationStyles';
 import Arrow from '../assets/arrow.png';
 import Set from '../assets/set.png';
@@ -85,6 +87,38 @@ const MemberInformation = () => {
     navigate('/introduction');
   };
 
+  const [profileData, setProfileData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const token = useSelector((state) => state.user.token);
+  const galaxyId = useSelector((state) => state.user.galaxy_id);
+  console.log('Current token:', token);
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const response = await axios.get(`/api/galaxy/1/profile`, {
+          headers: { Authorization: token },
+        });
+        setProfileData(response.data);
+      } catch (err) {
+        console.error('Error details:', err.response);
+        setError(err.message);
+      }
+    };
+
+    fetchProfile();
+  }, [token]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <M.Container>
       <M.Header>
@@ -103,7 +137,7 @@ const MemberInformation = () => {
         </M.Logo>
         <M.GroupTitle>
           <M.GroupName>
-            <p>밍글이</p>
+            <p>{profileData.name}</p>
           </M.GroupName>
           <M.Pencil>
             <M.GroupChange onClick={handleGroupClick}>
@@ -112,15 +146,15 @@ const MemberInformation = () => {
           </M.Pencil>
         </M.GroupTitle>
         <M.Intimacy>
-          <p>알아가는 사이</p>
+          <p>{profileData.relationship}</p>
         </M.Intimacy>
         <M.User>
           <M.Name>
             <M.NickName>
-              <p>닉네임</p>
+              <p>{profileData.users.me}</p>
             </M.NickName>
             <M.MemberName>
-              <p>수연</p>
+              <p>{profileData.user[0].nickname}</p>
             </M.MemberName>
             <M.Change onClick={handleNameClick}>
               <img id="Pencil" src={Pencil} />
@@ -131,7 +165,7 @@ const MemberInformation = () => {
               <p>아이디</p>
             </M.IdTitle>
             <M.IdInformation>
-              <p>limsoo0816</p>
+              <p>{profileData.users[0].username}</p>
             </M.IdInformation>
           </M.Id>
         </M.User>
@@ -139,15 +173,17 @@ const MemberInformation = () => {
           <M.GroupInformation2>그룹 정보</M.GroupInformation2>
           <M.GenderInformation>
             <M.Sex>성별</M.Sex>
-            <M.SexInformation>여자</M.SexInformation>
+            <M.SexInformation>{profileData.gender}</M.SexInformation>
           </M.GenderInformation>
           <M.Age>
             <M.AgeTitle>나이</M.AgeTitle>
-            <M.AgeInformation>20대</M.AgeInformation>
+            <M.AgeInformation>{profileData.age}</M.AgeInformation>
           </M.Age>
           <M.Group>
             <M.GroupMember>멤버</M.GroupMember>
-            <M.GroupMemberName>수연 슬아</M.GroupMemberName>
+            <M.GroupMemberName>
+              {profileData.users.map((user) => user.nickname).join(', ')}
+            </M.GroupMemberName>
             <M.GroupMemberId>limsoo0816 seulah03</M.GroupMemberId>
           </M.Group>
         </M.GroupInformation>
