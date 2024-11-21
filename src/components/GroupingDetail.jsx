@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import * as L from "../styles/LandingStyles";
 import { updateGroupingDetails } from "../userSlice"; // Redux 연동 액션
+import CodeParticipate from "./CodeParticipate";
 
 const GroupingDetail = () => {
   const [age, setAge] = useState(""); // age 초기값을 빈 문자열로 변경
   const [gender, setGender] = useState(""); // gender 초기값을 빈 문자열로 변경
   const [relationship, setRelationship] = useState(""); // closeness 초기값을 빈 문자열로 변경
   const [name, setName] = useState(""); // 그룹명 상태 추가
+  const [isCompleteBtnClicked, setIsCompleteBtnClicked] = useState(false);
   const navigate = useNavigate();
   const token = useSelector((state) => state.user.token);
   const dispatch = useDispatch();
@@ -57,8 +58,8 @@ const GroupingDetail = () => {
         console.log("galaxy_id가 저장되었습니다:", galaxy_id);
         // 그룹 생성 성공시 처리 (예: 그룹 상세 페이지로 이동 등)
         console.log("그룹 생성 성공:", response.data);
+        setIsCompleteBtnClicked(true);
         // 필요시 navigate('/group/detail') 등 페이지 이동 처리
-        navigate("/main");
       } else {
         // 실패 시 처리
         console.error("그룹 생성 실패:", response);
@@ -88,22 +89,22 @@ const GroupingDetail = () => {
         {/* 성별 선택 */}
         <div>
           <p>성별</p>
-          <label className={gender === "여자" ? "selected" : ""}>
+          <label className={gender === "여성" ? "selected" : ""}>
             <input
               type="radio"
               name="gender"
-              value="여자"
-              checked={gender === "여자"}
+              value="여성"
+              checked={gender === "여성"}
               onChange={handleGenderChange}
             />
             여자
           </label>
-          <label className={gender === "남자" ? "selected" : ""}>
+          <label className={gender === "남성" ? "selected" : ""}>
             <input
               type="radio"
               name="gender"
-              value="남자"
-              checked={gender === "남자"}
+              value="남성"
+              checked={gender === "남성"}
               onChange={handleGenderChange}
             />
             남자
@@ -212,11 +213,17 @@ const GroupingDetail = () => {
             </label>
           </div>
         </div>
-
         {/* 완료 버튼 */}
         <button id="completebtn" onClick={handleComplete}>
           완료
         </button>
+
+        {isCompleteBtnClicked && (
+          <>
+            <L.Backdrop onClick={() => setIsCompleteBtnClicked(false)} />{" "}
+            <CodeParticipate />
+          </>
+        )}
       </L.GroupingDetailForm>
     </L.GroupingDetail>
   );

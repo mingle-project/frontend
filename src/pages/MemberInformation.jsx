@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { useSelector } from 'react-redux';
-import * as M from '../styles/MemberInformationStyles';
-import Arrow from '../assets/arrow.png';
-import Set from '../assets/set.png';
-import MingleLogo from '../assets/minglelogowhite1.png';
-import Pencil from '../assets/pencil.png';
-import Help from '../assets/help.png';
-import Computer from '../assets/computer.png';
-import Logout from '../assets/logout.png';
-import Delete from '../assets/delete.png';
-import Line from '../assets/line.png';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useSelector } from "react-redux";
+import * as M from "../styles/MemberInformationStyles";
+import Arrow from "../assets/arrow.png";
+import Set from "../assets/set.png";
+import MingleLogo from "../assets/minglelogowhite1.png";
+import Pencil from "../assets/pencil.png";
+import Help from "../assets/help.png";
+import Computer from "../assets/computer.png";
+import Logout from "../assets/logout.png";
+import Delete from "../assets/delete.png";
+import Line from "../assets/line.png";
 
 const MemberInformation = () => {
   const [isInvitePopupOpen, setIsInvitePopupOpen] = useState(false);
@@ -70,21 +70,21 @@ const MemberInformation = () => {
   };
 
   const handleCopyCode = () => {
-    const groupCode = 'GD88YB';
+    const groupCode = "GD88YB";
     navigator.clipboard
       .writeText(groupCode)
       .then(() => {
-        alert('그룹코드가 복사되었습니다!');
+        alert("그룹코드가 복사되었습니다!");
       })
       .catch(() => {
-        alert('코드 복사에 실패했습니다. 다시 시도해주세요.');
+        alert("코드 복사에 실패했습니다. 다시 시도해주세요.");
       });
   };
 
   const navigate = useNavigate();
 
   const handleIntroductionClick = () => {
-    navigate('/introduction');
+    navigate("/introduction");
   };
 
   const [profileData, setProfileData] = useState(null);
@@ -93,17 +93,17 @@ const MemberInformation = () => {
 
   const token = useSelector((state) => state.user.token);
   const galaxyId = useSelector((state) => state.user.galaxy_id);
-  console.log('Current token:', token);
+  console.log("Current token:", token);
 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get(`/api/galaxy/1/profile`, {
+        const response = await axios.get(`/api/galaxy/me/profile`, {
           headers: { Authorization: token },
         });
         setProfileData(response.data);
       } catch (err) {
-        console.error('Error details:', err.response);
+        console.error("Error details:", err.response);
         setError(err.message);
       }
     };
@@ -182,7 +182,7 @@ const MemberInformation = () => {
           <M.Group>
             <M.GroupMember>멤버</M.GroupMember>
             <M.GroupMemberName>
-              {profileData.users.map((user) => user.nickname).join(', ')}
+              {profileData.users.map((user) => user.nickname).join(", ")}
             </M.GroupMemberName>
             <M.GroupMemberId>limsoo0816 seulah03</M.GroupMemberId>
           </M.Group>
@@ -190,7 +190,7 @@ const MemberInformation = () => {
       </M.Body>
       <M.Footer>
         <M.ButtonInvite onClick={handleInviteClick}>초대하기</M.ButtonInvite>
-        <M.ButtonLogout onClick={() => console.log('로그아웃 버튼 클릭')}>
+        <M.ButtonLogout onClick={() => console.log("로그아웃 버튼 클릭")}>
           로그아웃
         </M.ButtonLogout>
 
