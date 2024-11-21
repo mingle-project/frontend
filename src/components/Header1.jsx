@@ -1,14 +1,20 @@
-import { React, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import * as H1 from "../styles/Header1Styles";
-import Arrow from "../assets/arrow.png";
-import MingleLogo from "../assets/minglelogowhite1.png";
-import Hanger from "../assets/hanger.png";
+import { React, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import * as H1 from '../styles/Header1Styles';
+import Arrow from '../assets/arrow.png';
+import MingleLogo from '../assets/minglelogowhite1.png';
+import Hanger from '../assets/hanger.png';
 
 const Introduction = () => {
+  const navigate = useNavigate();
+
+  const handleArrowClick = () => {
+    navigate('/memberinformation');
+  };
+
   return (
     <H1.Container>
-      <H1.Arrow>
+      <H1.Arrow onClick={handleArrowClick}>
         <img id="Arrow" src={Arrow}></img>
       </H1.Arrow>
       <H1.MingleLogo>
