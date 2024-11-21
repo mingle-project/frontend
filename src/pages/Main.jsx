@@ -19,11 +19,18 @@ const Main = () => {
   const navigate = useNavigate();
 
   const handleMyPageClick = () => {
-    navigate('/memberinformation');
+    navigate('/memberinformation', { state: userInfo });
   };
 
   const galaxyId = useSelector((state) => state.user.galaxy_id);
   const token = useSelector((state) => state.user.token);
+
+  const userInfo = useSelector((state) => ({
+    id: state.user.id,
+    pw: state.user.pw,
+    token: state.user.token,
+    galaxy_id: state.user.galaxy_id,
+  }));
 
   useEffect(() => {
     const fetchData = async () => {
@@ -64,7 +71,7 @@ const Main = () => {
         if (inforResponse.status === 200) {
           console.log(inforResponse.data);
         } else {
-          console.error("포인트 정보를 가져오는 데 실패했습니다.");
+          console.error('포인트 정보를 가져오는 데 실패했습니다.');
         }
       } catch (error) {
         console.error('서버 오류:', error);

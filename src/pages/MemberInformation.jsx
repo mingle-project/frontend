@@ -88,6 +88,7 @@ const MemberInformation = () => {
   };
 
   const [profileData, setProfileData] = useState(null);
+  const [userData, setUserData] = useState({ user: [] });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -98,17 +99,37 @@ const MemberInformation = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get(`/api/galaxy/1/profile`, {
+        const response = await axios.get(`/api/galaxy/me/profile`, {
           headers: { Authorization: token },
         });
-        setProfileData(response.data);
+        setProfileData(response.data || { user: [], user: [] });
+        setIsLoading(false);
       } catch (err) {
-        console.error('Error details:', err.response);
+        console.error('Full error response:', err.response);
         setError(err.message);
+        setIsLoading(false);
       }
     };
 
     fetchProfile();
+  }, [token]);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get(`/api/users/me/profile`, {
+          headers: { Authorization: token },
+        });
+        setUserData(response.data || { user: [], user: [] });
+        setIsLoading(false);
+      } catch (err) {
+        console.error('Full error response:', err.response);
+        setError(err.message);
+        setIsLoading(false);
+      }
+    };
+
+    fetchUser();
   }, [token]);
 
   if (isLoading) {
@@ -117,6 +138,10 @@ const MemberInformation = () => {
 
   if (error) {
     return <div>Error: {error}</div>;
+  }
+
+  if (!profileData) {
+    return <div>No profile data available</div>;
   }
 
   return (
@@ -151,10 +176,13 @@ const MemberInformation = () => {
         <M.User>
           <M.Name>
             <M.NickName>
-              <p>{profileData.users.me}</p>
+              <p>닉네임</p>
             </M.NickName>
             <M.MemberName>
-              <p>{profileData.user[0].nickname}</p>
+              {/* <p>수연</p> */}
+              {userData.users && userData.users.length > 0
+                ? userData.users.map((user) => user.nickname).join(', ')
+                : 'No members available'}
             </M.MemberName>
             <M.Change onClick={handleNameClick}>
               <img id="Pencil" src={Pencil} />
@@ -165,7 +193,10 @@ const MemberInformation = () => {
               <p>아이디</p>
             </M.IdTitle>
             <M.IdInformation>
-              <p>{profileData.users[0].username}</p>
+              {/* <p>limsoo</p> */}
+              {userData.users && userData.users.length > 0
+                ? userData.users.map((user) => user.username).join(', ')
+                : 'No members available'}
             </M.IdInformation>
           </M.Id>
         </M.User>
@@ -182,9 +213,15 @@ const MemberInformation = () => {
           <M.Group>
             <M.GroupMember>멤버</M.GroupMember>
             <M.GroupMemberName>
-              {profileData.users.map((user) => user.nickname).join(', ')}
+              {profileData.users && profileData.users.length > 0
+                ? profileData.users.map((user) => user.nickname).join(', ')
+                : 'No members available'}
             </M.GroupMemberName>
-            <M.GroupMemberId>limsoo0816 seulah03</M.GroupMemberId>
+            <M.GroupMemberId>
+              {profileData.users && profileData.users.length > 0
+                ? profileData.users.map((user) => user.username).join(', ')
+                : 'No members available'}
+            </M.GroupMemberId>
           </M.Group>
         </M.GroupInformation>
       </M.Body>
