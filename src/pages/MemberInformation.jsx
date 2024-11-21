@@ -87,6 +87,10 @@ const MemberInformation = () => {
     navigate("/introduction");
   };
 
+  const handleMainClick = () => {
+    navigate(`/main`);
+  };
+
   const [profileData, setProfileData] = useState(null);
   const [userData, setUserData] = useState({ user: [] });
   const [isLoading, setIsLoading] = useState(true);
@@ -122,8 +126,8 @@ const MemberInformation = () => {
         const response = await axios.get(`/api/users/me/profile`, {
           headers: { Authorization: token },
         });
-        setUserData(response.data || { user: [], user: [] });
-        setIsLoading(false);
+        console.log(response.data); // API 응답 구조 확인
+        setUserData(response.data); // users 속성이 포함되어 있는지 확인
       } catch (err) {
         console.error('Full error response:', err.response);
         setError(err.message);
@@ -149,7 +153,7 @@ const MemberInformation = () => {
   return (
     <M.Container>
       <M.Header>
-        <M.Arrow>
+        <M.Arrow onClick={handleMainClick}>
           <img id="Arrow" src={Arrow} />
         </M.Arrow>
         <M.Set>
@@ -182,8 +186,8 @@ const MemberInformation = () => {
             </M.NickName>
             <M.MemberName>
               {/* <p>수연</p> */}
-              {userData.users && userData.users.length > 0
-                ? userData.users.map((user) => user.nickname).join(', ')
+              {userData && userData.nickname
+                ? userData.nickname
                 : 'No members available'}
             </M.MemberName>
             <M.Change onClick={handleNameClick}>
@@ -196,8 +200,8 @@ const MemberInformation = () => {
             </M.IdTitle>
             <M.IdInformation>
               {/* <p>limsoo</p> */}
-              {userData.users && userData.users.length > 0
-                ? userData.users.map((user) => user.username).join(', ')
+              {userData && userData.username
+                ? userData.username
                 : 'No members available'}
             </M.IdInformation>
           </M.Id>
@@ -326,7 +330,7 @@ const MemberInformation = () => {
         {isGroupPopupOpen && (
           <M.GroupPopup>
             <M.GroupPopupName>
-              <p>밍글이</p>
+              <p>{profileData.name}</p>
             </M.GroupPopupName>
             <M.GroupPopup2>
               <M.GroupCloseButton onClick={handleGroupClosePopup}>
@@ -340,7 +344,11 @@ const MemberInformation = () => {
         {isNamePopupOpen && (
           <M.NamePopup>
             <M.NamePopupName>
-              <p>수연</p>
+              <p>
+                {userData && userData.nickname
+                  ? userData.nickname
+                  : 'No members available'}
+              </p>
             </M.NamePopupName>
             <M.NamePopup2>
               <M.NameCloseButton onClick={handleNameClosePopup}>
