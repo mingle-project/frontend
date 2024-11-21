@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 
 export const Container = styled.div`
   position: relative;
@@ -46,12 +46,13 @@ export const Header = styled.div`
   #mypage {
     position: absolute;
     right: 30px;
+    cursor: pointer;
   }
 
   p {
     color: var(--gray, #606060);
     text-align: center;
-    font-feature-settings: "liga" off, "clig" off;
+    font-feature-settings: 'liga' off, 'clig' off;
     font-family: Beiruti;
     font-size: 30px;
     font-style: normal;

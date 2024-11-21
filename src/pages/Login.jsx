@@ -1,49 +1,50 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { login } from "../userSlice"; // 로그인 액션 가져오기
-import { useNavigate } from "react-router-dom";
-import * as L from "../styles/LandingStyles";
-import LogoImg from "../assets/logofinal.svg";
-import LoginBtn from "../assets/loginbtn.svg";
-import Globe from "../assets/globe.svg";
-import Ministarpink from "../assets/ministarpink.png";
-import Ministaryellow from "../assets/ministaryellow.png";
-import Ministarneon from "../assets/ministary_green.png";
-import Ministarred from "../assets/ministarred.png";
-import Ministargreen from "../assets/ministargreen.png";
-import Ministarblue from "../assets/ministarblue.png";
-import UserId from "../assets/mail.png";
-import UserPassword from "../assets/password.png";
-import axios from "axios";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { login } from '../userSlice'; // 로그인 액션 가져오기
+import { useNavigate } from 'react-router-dom';
+import * as L from '../styles/LandingStyles';
+import LogoImg from '../assets/logofinal.svg';
+import LoginBtn from '../assets/loginbtn.svg';
+import Globe from '../assets/globe.svg';
+import Ministarpink from '../assets/ministarpink.png';
+import Ministaryellow from '../assets/ministaryellow.png';
+import Ministarneon from '../assets/ministary_green.png';
+import Ministarred from '../assets/ministarred.png';
+import Ministargreen from '../assets/ministargreen.png';
+import Ministarblue from '../assets/ministarblue.png';
+import UserId from '../assets/mail.png';
+import UserPassword from '../assets/password.png';
+import axios from 'axios';
 
 const Login = () => {
-  const [username, setUsername] = useState(""); // 입력된 아이디
-  const [password, setPassword] = useState(""); // 입력된 비밀번호
+  const [username, setUsername] = useState(''); // 입력된 아이디
+  const [password, setPassword] = useState(''); // 입력된 비밀번호
   const dispatch = useDispatch(); // dispatch 훅 사용
   const navigate = useNavigate(); // 페이지 이동을 위한 navigate 훅
 
   // Login.js
   const handleLoginClick = async () => {
     try {
-      const response = await axios.post("/api/login", { username, password });
+      const response = await axios.post('/api/login', { username, password });
 
       if (response.status === 200) {
         const authorization = response.headers.authorization;
         dispatch(login({ id: username, pw: password, token: authorization }));
-        console.log("토큰이 Redux에 저장되었습니다:", authorization, username);
 
-        navigate("/grouping");
+        console.log('토큰이 Redux에 저장되었습니다:', authorization, username);
+        navigate('/grouping');
+
       } else {
-        alert("아이디 또는 비밀번호가 잘못되었습니다.");
+        alert('아이디 또는 비밀번호가 잘못되었습니다.');
       }
     } catch (error) {
-      console.error("로그인 오류:", error.response.status);
+      console.error('로그인 오류:', error.response.status);
     }
   };
 
   const handleSignUpClick = () => {
     // 회원가입 버튼 클릭 시 회원가입 페이지로 이동
-    navigate("/signup");
+    navigate('/signup');
   };
 
   return (
@@ -80,7 +81,7 @@ const Login = () => {
         </p>
       </L.IsItFirst>
 
-      <L.LandingImg style={{ bottom: "-150px" }}>
+      <L.LandingImg style={{ bottom: '-150px' }}>
         <L.Stars>
           <img id="Ministarpink" src={Ministarpink} />
           <img id="Ministaryellow" src={Ministaryellow} />
