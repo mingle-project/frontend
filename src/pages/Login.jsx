@@ -30,8 +30,10 @@ const Login = () => {
       if (response.status === 200) {
         const authorization = response.headers.authorization;
         dispatch(login({ id: username, pw: password, token: authorization }));
+
         console.log('토큰이 Redux에 저장되었습니다:', authorization, username);
         navigate('/grouping');
+
       } else {
         alert('아이디 또는 비밀번호가 잘못되었습니다.');
       }

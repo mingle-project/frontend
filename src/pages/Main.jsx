@@ -28,13 +28,18 @@ const Main = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [pointResponse, starResponse] = await Promise.all([
+        const [pointResponse, starResponse, inforResponse] = await Promise.all([
           axios.get(`/api/galaxy/${galaxyId}/cash`, {
             headers: {
               Authorization: token,
             },
           }),
           axios.get(`/api/galaxy/${galaxyId}/stars/pet`, {
+            headers: {
+              Authorization: token,
+            },
+          }),
+          axios.get(`/api/galaxy/${galaxyId}/profile`, {
             headers: {
               Authorization: token,
             },
@@ -49,11 +54,17 @@ const Main = () => {
 
         if (starResponse.status === 200 && starResponse.data) {
           // 서버에서 받아온 이미지와 색상 정보 설정
-          setImage(starResponse.data.image);
-          setColor(starResponse.data.color);
+          setImage(starResponse.data.data.image);
+          setColor(starResponse.data.data.color);
+          console.log(image);
         } else {
           console.error('스타 데이터를 가져오는 데 실패했습니다.');
           setImage(null); // 스타 데이터가 없으면 이미지 상태를 null로 설정
+        }
+        if (inforResponse.status === 200) {
+          console.log(inforResponse.data);
+        } else {
+          console.error("포인트 정보를 가져오는 데 실패했습니다.");
         }
       } catch (error) {
         console.error('서버 오류:', error);
@@ -71,8 +82,7 @@ const Main = () => {
       setCreatingStar(true); // 버튼 클릭 시 로딩 상태로 변경
 
       const response = await axios.get(
-        `/api/galaxy/${galaxyId}/stars/pet/new`,
-        {}, // 별 생성에 필요한 데이터가 있다면 여기에 추가
+        `/api/galaxy/${galaxyId}/stars/pet/new`, // 별 생성에 필요한 데이터가 있다면 여기에 추가
         {
           headers: {
             Authorization: token,
@@ -81,8 +91,9 @@ const Main = () => {
       );
 
       if (response.status === 200) {
-        setImage(response.data.image); // 새로운 별 이미지로 업데이트
-        setColor(response.data.color); // 새로운 별 색상으로 업데이트
+        console.log(response.data);
+        // 페이지를 새로 고침
+        window.location.reload();
       } else {
         console.error('새로운 별 생성에 실패했습니다.');
       }
