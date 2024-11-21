@@ -65,6 +65,10 @@ export const Set = styled.div`
   }
 `;
 
+export const SetChange = styled.div`
+  cursor: pointer;
+`;
+
 export const Body = styled.div``;
 
 export const GroupTitle = styled.div`
@@ -264,7 +268,7 @@ export const ButtonInvite = styled.div`
   background-color: #606060;
   color: white;
   border: none;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   padding: 10px 60px;
   border-radius: 25px;
   cursor: pointer;
@@ -276,8 +280,7 @@ export const ButtonInvite = styled.div`
 `;
 
 export const ButtonLogout = styled.div`
-  background-color: #007bff;
-  color: white;
+  color: #666666;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
@@ -285,7 +288,364 @@ export const ButtonLogout = styled.div`
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: #0056b3;
+    color: #464545;
+  }
+`;
+
+export const SetPopup = styled.div`
+  position: fixed;
+  top: 290px;
+  transform: translate(0%, -68%);
+  background-color: white;
+  box-shadow: 10px 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  padding: 30px;
+  z-index: 1000;
+  text-align: center;
+  width: 230px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+`;
+
+export const SetPopupHelp = styled.div`
+  font-family: 'MaplestoryOTFBold';
+  font-size: 15px;
+  color: #606060;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  gap: 80px;
+  cursor: pointer;
+`;
+
+export const SetPopupIntroduction = styled.div`
+  font-family: 'MaplestoryOTFBold';
+  font-size: 15px;
+  color: #606060;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  gap: 40px;
+  cursor: pointer;
+`;
+
+// export const SetPopupLine = styled.div`
+//   width: 10px;
+//   margin-top: -20px;
+//   margin-bottom: -20px;
+//   margin-right: 100px;
+// `;
+
+export const SetPopupOut = styled.div`
+  font-family: 'MaplestoryOTFBold';
+  font-size: 15px;
+  color: #606060;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  gap: 50px;
+  cursor: pointer;
+`;
+
+export const SetPopupDelete = styled.div`
+  font-family: 'MaplestoryOTFBold';
+  font-size: 15px;
+  color: #606060;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  gap: 58px;
+  margin-left: 5px;
+  cursor: pointer;
+`;
+
+export const SetPopup2 = styled.div`
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+`;
+
+export const SetCloseButton = styled.div`
+  font-family: 'MaplestoryOTFBold';
+  background-color: #606060;
+  color: white;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 18px;
+  width: 150px;
+  height: 30px;
+  font-size: 15px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #525151;
+  }
+`;
+
+export const OutPopup = styled.div`
+  position: fixed;
+  top: 470px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 20px;
+  padding: 30px;
+  z-index: 1000;
+  text-align: center;
+  width: 330px;
+  height: 390px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+`;
+
+export const OutPopupTitle = styled.div`
+  font-family: 'MaplestoryOTFBold';
+  font-size: 23px;
+  color: #606060;
+  border: none;
+  padding: 10px;
+  text-align: center;
+  display: inline-block;
+  width: 250px;
+  margin-bottom: 11px;
+  margin-top: 18px;
+`;
+
+export const OutPopupMiddle = styled.div`
+  font-family: 'MaplestoryOTFBold';
+  font-size: 17px;
+  color: #606060;
+  border: none;
+  padding: 10px;
+  text-align: center;
+  display: inline-block;
+  width: 250px;
+  margin-bottom: 11px;
+`;
+
+export const OutPopupSmall1 = styled.div`
+  font-family: 'MaplestoryOTFBold';
+  border: none;
+  padding: 10px;
+  text-align: center;
+  display: inline-block;
+  width: 250px;
+  margin-bottom: 11px;
+`;
+
+export const OutPopupSmall2 = styled.div`
+  font-family: 'MaplestoryOTFBold';
+  border: none;
+  padding: 10px;
+  text-align: center;
+  display: inline-block;
+  width: 250px;
+  margin-bottom: 11px;
+`;
+
+export const OutPopup2 = styled.div`
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+`;
+
+export const OutCloseButton = styled.div`
+  font-family: 'MaplestoryOTFBold';
+  background-color: #606060;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 18px;
+  width: 135px;
+  font-size: 20px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #525151;
+  }
+`;
+
+export const OutDeleteButton = styled.div`
+  font-family: 'MaplestoryOTFBold';
+  background-color: #dc143c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 18px;
+  width: 135px;
+  font-size: 20px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #be1235;
+  }
+`;
+
+export const DeletePopup = styled.div`
+  position: fixed;
+  top: 470px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 20px;
+  padding: 30px;
+  z-index: 1000;
+  text-align: center;
+  width: 330px;
+  height: 390px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 5px;
+`;
+
+export const DeletePopupTitle = styled.div`
+  font-family: 'MaplestoryOTFBold';
+  font-size: 21px;
+  color: #606060;
+  border: none;
+  padding: 10px;
+  text-align: center;
+  display: inline-block;
+  width: 250px;
+  /* margin-bottom: 11px;
+  margin-top: 18px; */
+`;
+
+export const DeletePopupMiddle = styled.div`
+  font-family: 'MaplestoryOTFBold';
+  font-size: 15px;
+  color: #606060;
+  border: none;
+  padding: 10px;
+  text-align: center;
+  display: inline-block;
+  width: 250px;
+  margin-bottom: 11px;
+`;
+
+export const DeletePopupSmall1 = styled.div`
+  font-family: 'MaplestoryOTFBold';
+  border: none;
+  padding: 10px;
+  text-align: center;
+  display: inline-block;
+  width: 250px;
+  margin-bottom: 11px;
+`;
+
+export const DeletePopupSmall2 = styled.div`
+  font-family: 'MaplestoryOTFBold';
+  border: none;
+  padding: 10px;
+  text-align: center;
+  display: inline-block;
+  width: 250px;
+  margin-bottom: 11px;
+`;
+
+export const TextInput = styled.input`
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #606060;
+  border-radius: 15px;
+  font-size: 14px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  &:focus {
+    outline: none;
+    border-color: #606060;
+  }
+`;
+
+export const DeletePopup2 = styled.div`
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+`;
+
+export const DeleteCloseButton = styled.div`
+  font-family: 'MaplestoryOTFBold';
+  background-color: #606060;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 18px;
+  width: 135px;
+  font-size: 20px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #525151;
+  }
+`;
+
+export const DeleteDeleteButton = styled.div`
+  font-family: 'MaplestoryOTFBold';
+  background-color: #dc143c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 18px;
+  width: 135px;
+  font-size: 20px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #be1235;
   }
 `;
 
