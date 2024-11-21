@@ -79,6 +79,12 @@ const MemberInformation = () => {
       });
   };
 
+  const navigate = useNavigate();
+
+  const handleIntroductionClick = () => {
+    navigate('/introduction');
+  };
+
   return (
     <M.Container>
       <M.Header>
@@ -158,7 +164,7 @@ const MemberInformation = () => {
               <p>도움말</p>
               <img id="Help" src={Help} />
             </M.SetPopupHelp>
-            <M.SetPopupIntroduction>
+            <M.SetPopupIntroduction onClick={handleIntroductionClick}>
               <p>프로젝트 소개</p>
               <img id="Computer" src={Computer} />
             </M.SetPopupIntroduction>
