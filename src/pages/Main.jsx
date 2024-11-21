@@ -19,11 +19,20 @@ const Main = () => {
   const navigate = useNavigate();
 
   const handleMyPageClick = () => {
-    navigate("/memberinformation");
+
+    navigate('/memberinformation', { state: userInfo });
+
   };
 
   const galaxyId = useSelector((state) => state.user.galaxy_id);
   const token = useSelector((state) => state.user.token);
+
+  const userInfo = useSelector((state) => ({
+    id: state.user.id,
+    pw: state.user.pw,
+    token: state.user.token,
+    galaxy_id: state.user.galaxy_id,
+  }));
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,6 +65,8 @@ const Main = () => {
           console.error("스타 데이터를 가져오는 데 실패했습니다.");
           setImage(null); // 스타 데이터가 없으면 이미지 상태를 null로 설정
         }
+       
+
       } catch (error) {
         console.error("서버 오류:", error);
       }
