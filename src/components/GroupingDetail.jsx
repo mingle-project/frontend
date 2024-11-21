@@ -1,10 +1,19 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 import * as L from "../styles/LandingStyles";
+import { updateGroupingDetails } from "../userSlice"; // Redux 연동 액션
 
 const GroupingDetail = () => {
-  const [age, setAge] = useState(false);
-  const [gender, setGender] = useState(false);
-  const [closeness, setCloseness] = useState(false);
+  const [age, setAge] = useState(""); // age 초기값을 빈 문자열로 변경
+  const [gender, setGender] = useState(""); // gender 초기값을 빈 문자열로 변경
+  const [relationship, setRelationship] = useState(""); // closeness 초기값을 빈 문자열로 변경
+  const [name, setName] = useState(""); // 그룹명 상태 추가
+  const navigate = useNavigate();
+  const token = useSelector((state) => state.user.token);
+  const dispatch = useDispatch();
 
   const handleGenderChange = (e) => {
     setGender(e.target.value);
@@ -14,17 +23,69 @@ const GroupingDetail = () => {
     setAge(e.target.value);
   };
 
-  const handleClosenessChange = (e) => {
-    setCloseness(e.target.value);
+  const handleRelationshipChange = (e) => {
+    setRelationship(e.target.value);
   };
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleComplete = async () => {
+    // 입력된 데이터를 Redux에 저장
+
+    // axios로 서버에 데이터 전송
+    try {
+      const response = await axios.post(
+        "/api/galaxy", // 실제 API 엔드포인트
+        {
+          name,
+          gender,
+          age,
+          relationship,
+        },
+        {
+          headers: {
+            Authorization: token, // Redux에서 가져온 token을 Authorization 헤더에 추가
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        const galaxy_id = response.data.galaxy_id;
+        dispatch(updateGroupingDetails({ galaxy_id: galaxy_id }));
+        console.log("galaxy_id가 저장되었습니다:", galaxy_id);
+        // 그룹 생성 성공시 처리 (예: 그룹 상세 페이지로 이동 등)
+        console.log("그룹 생성 성공:", response.data);
+        // 필요시 navigate('/group/detail') 등 페이지 이동 처리
+        navigate("/main");
+      } else {
+        // 실패 시 처리
+        console.error("그룹 생성 실패:", response);
+      }
+    } catch (error) {
+      // 서버 요청 실패 시 처리
+      console.error("서버 오류:", error);
+    }
+  };
+
   return (
     <L.GroupingDetail>
       <L.GroupingDetailForm>
         <div id="bar"></div>
+
         <div>
           <p>은하 이름</p>
-          <input type="text" id="groupname" placeholder="그룹명" />
+          <input
+            type="text"
+            id="groupname"
+            placeholder="그룹명"
+            value={name}
+            onChange={handleNameChange} // 그룹명 입력 값 변경
+          />
         </div>
+
+        {/* 성별 선택 */}
         <div>
           <p>성별</p>
           <label className={gender === "여자" ? "selected" : ""}>
@@ -115,41 +176,50 @@ const GroupingDetail = () => {
         <div>
           <p>친밀도</p>
           <div id="closenessdiv">
-            <label className={closeness === "알아가는 사이" ? "selected" : ""}>
+            <label
+              className={relationship === "알아가는 사이" ? "selected" : ""}
+            >
               <input
                 type="radio"
                 name="closeness"
                 value="알아가는 사이"
-                checked={closeness === "알아가는 사이"}
-                onChange={handleClosenessChange}
+                checked={relationship === "알아가는 사이"}
+                onChange={handleRelationshipChange}
               />
               알아가는 사이
             </label>
-            <label className={closeness === "편한 사이" ? "selected" : ""}>
+            <label className={relationship === "편한 사이" ? "selected" : ""}>
               <input
                 type="radio"
                 name="closeness"
                 value="편한 사이"
-                checked={closeness === "편한 사이"}
-                onChange={handleClosenessChange}
+                checked={relationship === "편한 사이"}
+                onChange={handleRelationshipChange}
               />
               편한 사이
             </label>
-            <label className={closeness === "비밀 없는 사이" ? "selected" : ""}>
+            <label
+              className={relationship === "비밀 없는 사이" ? "selected" : ""}
+            >
               <input
                 type="radio"
                 name="closeness"
                 value="비밀 없는 사이"
-                checked={closeness === "비밀 없는 사이"}
-                onChange={handleClosenessChange}
+                checked={relationship === "비밀 없는 사이"}
+                onChange={handleRelationshipChange}
               />
               비밀 없는 사이
             </label>
           </div>
         </div>
-        <button id="completebtn">완료</button>
+
+        {/* 완료 버튼 */}
+        <button id="completebtn" onClick={handleComplete}>
+          완료
+        </button>
       </L.GroupingDetailForm>
     </L.GroupingDetail>
   );
 };
+
 export default GroupingDetail;

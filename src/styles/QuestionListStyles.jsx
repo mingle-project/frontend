@@ -27,16 +27,15 @@ export const Header = styled.div`
 `;
 export const body = styled.div`
   height: 60%;
-  width: 393px;
-  background-color: #ffffff;
+  width: 385px;
   overflow-y: auto;
+  margin-right: 4px;
   &::-webkit-scrollbar {
     width: 6px;
-    margin-right: 4px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: #d9d9d9;
+    background: #000000;
     border-radius: 4px;
   }
 
@@ -46,12 +45,13 @@ export const body = styled.div`
 `;
 export const QuestionDetail = styled.div`
   #questionListDiv {
+    margin-top: 10px;
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     text-align: center;
     flex-direction: row;
-    margin: 0 20px;
+    margin-left: 20px;
   }
 `;
 export const MainImg = styled.div`
@@ -59,13 +59,31 @@ export const MainImg = styled.div`
 `;
 export const QuestionText = styled.div`
   margin-right: 5px;
+  margint-top: 10px;
   color: #000;
-  text-align: center;
+  text-align: left;
   font-family: Inter;
-  font-size: 18px;
+  font-size: 15px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 138%; /* 19.32px */
   letter-spacing: -0.42px;
+  #date {
+    color: #000000;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 138%; /* 13.8px */
+    letter-spacing: -0.3px;
+  }
 `;
-export const Date = styled.div``;
+export const Date = styled.div`
+  color: #000000;
+  font-family: Inter;
+  font-size: 10px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 138%; /* 13.8px */
+  letter-spacing: -0.3px;
+`;
