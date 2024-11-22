@@ -177,15 +177,14 @@ export const Change = styled.div`
 `;
 
 export const Id = styled.div`
-  margin-top: 20px;
+  margin-top: 10px;
   font-family: 'MaplestoryOTFBold';
   font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 30px;
-  margin-left: 30px;
+  gap: 45px;
 `;
 
 export const IdTitle = styled.div`
@@ -202,11 +201,26 @@ export const GroupInformation = styled.div`
 `;
 
 export const GroupInformation2 = styled.div`
+  display: flex;
+  gap: 8px;
+`;
+
+export const GroupInformation3 = styled.div`
   font-size: 22px;
   text-align: left;
 `;
+
+export const GroupInformationChange = styled.div`
+  margin-top: 5px;
+  img#Pencil {
+    width: 18px !important;
+    height: auto !important;
+  }
+  cursor: pointer;
+`;
+
 export const GenderInformation = styled.div`
-  margin-top: 40px;
+  margin-top: 20px;
   font-family: 'MaplestoryOTFBold';
   font-size: 20px;
   display: flex;
@@ -588,6 +602,10 @@ export const DeletePopupSmall2 = styled.div`
   margin-bottom: 11px;
 `;
 
+export const NamePopupContent = styled.div``;
+
+export const ErrorMessage = styled.div``;
+
 export const TextInput = styled.input`
   width: 100%;
   padding: 10px;
@@ -797,6 +815,27 @@ export const NamechangeButton = styled.div`
     background-color: #525151;
   }
 `;
+
+export const GalaxyPopup = styled.div`
+  position: fixed;
+  top: 410px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 20px;
+  padding: 30px;
+  z-index: 1000;
+  text-align: center;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+`;
+
+export const GalaxyPopupContent = styled.div``;
+
+export const GalaxyPopupActions = styled.div``;
 
 export const Popup = styled.div`
   position: fixed;
