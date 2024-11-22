@@ -40,7 +40,7 @@ export const BottomBackground = styled.div`
 
 export const BottomBar = styled.div`
   position: absolute;
-  top: 440px;
+  top: 480px;
   width: 96px;
   height: 5px;
   img {
@@ -51,7 +51,7 @@ export const BottomBar = styled.div`
 
 export const Crown = styled.div`
   position: absolute;
-  top: 510px;
+  top: 540px;
   left: 45px;
   img {
     width: 71px;
@@ -61,7 +61,7 @@ export const Crown = styled.div`
 
 export const PartyHat = styled.div`
   position: absolute;
-  top: 490px;
+  top: 520px;
   left: 155px;
   img {
     width: 90px;
@@ -71,25 +71,25 @@ export const PartyHat = styled.div`
 
 export const ItemText = styled.div`
   position: absolute;
-  top: 480px;
+  top: 510px;
   left: 50px;
   font-size: 14px;
   color: #606060;
-  font-family: "MaplestoryOTFBold";
+  font-weight: bold;
 `;
 
 export const AuraText = styled.div`
   position: absolute;
-  top: 590px;
+  top: 620px;
   left: 50px;
   font-size: 14px;
   color: #606060;
-  font-family: "MaplestoryOTFBold";
+  font-weight: bold;
 `;
 
 export const Aura = styled.div`
   position: absolute;
-  top: 610px;
+  top: 640px;
   left: 30px;
   img {
     width: 100px;
