@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import { styled } from "styled-components";
 
 export const Container = styled.div`
   position: relative;
@@ -23,10 +23,12 @@ export const Container = styled.div`
   #cart {
     position: absolute;
     right: 30px;
+    top: 85px;
   }
 `;
 export const Header = styled.div`
-  margin-top: 20px; /*대표별 위 마진*/
+  position: absolute;
+  top: 20px; /*대표별 위 마진*/
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,17 +44,24 @@ export const Header = styled.div`
     flex-direction: row;
     position: absolute;
     left: 30px;
+    top: 15px;
+  }
+  #img {
+    position: absolute;
+    left: 30px;
+    top: 23px;
   }
   #mypage {
     position: absolute;
-    right: 30px;
     cursor: pointer;
+    right: 30px;
+    top: 20px;
   }
 
   p {
     color: var(--gray, #606060);
     text-align: center;
-    font-feature-settings: 'liga' off, 'clig' off;
+    font-feature-settings: "liga" off, "clig" off;
     font-family: Beiruti;
     font-size: 30px;
     font-style: normal;

@@ -1,16 +1,17 @@
-import { React, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import * as I from '../styles/IntroductionStyles';
-import Header1 from '../components/Header1';
-import IntroFooter from '../components/IntroductionFooter';
-import IntroStarD0 from '../assets/stardust0.png';
-import IntroStarD1 from '../assets/stardust1.png';
-import MingleLogoW from '../assets/minglelogowhite1.png';
+import { React, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import * as I from "../styles/IntroductionStyles";
+import Header from "../components/Header";
+import IntroFooter from "../components/IntroductionFooter";
+import IntroStarD0 from "../assets/stardust0.png";
+import IntroStarD1 from "../assets/stardust1.png";
+import MingleLogoW from "../assets/minglelogowhite1.png";
+import Arrow from "../assets/arrow.png";
 
 const Introduction = () => {
   return (
     <I.Container>
-      <Header1 />
+      <Header pageurl="/memberinformation" img={Arrow} />
       <I.Stardust0>
         <img id="IntroStarD0" src={IntroStarD0} />
       </I.Stardust0>

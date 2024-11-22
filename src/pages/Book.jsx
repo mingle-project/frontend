@@ -1,6 +1,6 @@
 import { React, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import BookHeader from "../components/BookHeader";
+import Header from "../components/Header";
 import Footer from "../components/Footer";
 import * as B from "../styles/BookStyles";
 import White from "../assets/minglelogowhite0.png";
@@ -11,11 +11,12 @@ import Red from "../assets/minglelogored.png";
 import Bottom from "../assets/rectangle2.png";
 import Bar from "../assets/rectangle1.png";
 import Wearing from "../assets/partyhat.png";
+import Hanger from "../assets/hanger.png";
 
 const Book = () => {
   return (
     <B.Container>
-      <BookHeader />
+      <Header pageurl="/Bookitem" img={Hanger} />
       <B.MainStar>
         <img id="Violet" src={Violet} />
       </B.MainStar>

@@ -28,10 +28,10 @@ const Footer = () => {
     navigate("");
   };
   const goHome = () => {
-    navigate("");
+    navigate("/main");
   };
   const goBook = () => {
-    navigate("");
+    navigate("/book");
   };
 
   return (
