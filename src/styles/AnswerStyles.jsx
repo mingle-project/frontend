@@ -23,7 +23,7 @@ export const StarIcons = styled.div`
   gap: 40px;
   position: relative;
   margin-top: 70px;
-  top: -250px;
+  top: -270px;
   img {
     width: 25px;
     height: 25px;
