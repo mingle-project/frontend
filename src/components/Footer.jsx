@@ -25,7 +25,7 @@ export const FooterDesign = styled.div`
 const Footer = () => {
   const navigate = useNavigate();
   const goQuestion = () => {
-    navigate("");
+    navigate("/questionlist");
   };
   const goHome = () => {
     navigate("/main");

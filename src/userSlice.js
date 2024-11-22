@@ -11,6 +11,7 @@ export const userSlice = createSlice({
     token: "", // 사용자 토큰 (로그인 후 저장)
     isLoggedIn: false, // 로그인 상태
     galaxy_id: "",
+    question_id: "",
   },
   reducers: {
     login: (state, action) => {
@@ -23,6 +24,9 @@ export const userSlice = createSlice({
     updateGroupingDetails: (state, action) => {
       state.galaxy_id = action.payload.galaxy_id;
     },
+    main: (state, action) => {
+      state.question_id = action.payload.question_id;
+    },
     logout: (state) => {
       state.id = ""; // 아이디 초기화
       state.pw = ""; // 비밀번호 초기화
@@ -33,6 +37,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { login, logout, updateGroupingDetails } = userSlice.actions;
+export const { login, logout, updateGroupingDetails, main } = userSlice.actions;
 
 export default userSlice.reducer;

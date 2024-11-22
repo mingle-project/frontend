@@ -8,20 +8,24 @@ import MyPageBtn from "../assets/menu.png";
 import MiniLogo from "../assets/minilogo.svg";
 import PointImg from "../assets/starcoin.png";
 import Cart from "../assets/cart.png";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { main } from "../userSlice";
 
 const Main = () => {
   const [point, setPoint] = useState(0); // 포인트 상태 초기화
   const [image, setImage] = useState(""); // 이미지 상태 초기화
   const [color, setColor] = useState(""); // 색상 상태 초기화
   const [creatingStar, setCreatingStar] = useState(false); // 별 생성 상태 초기화
+  const [todayQuestion, setTodayQuestion] = useState("");
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleMyPageClick = () => {
-
-    navigate('/memberinformation', { state: userInfo });
-
+    navigate("/memberinformation", { state: userInfo });
+  };
+  const goAnswer = () => {
+    navigate("/answer");
   };
 
   const galaxyId = useSelector((state) => state.user.galaxy_id);
@@ -38,7 +42,7 @@ const Main = () => {
     const fetchData = async () => {
       try {
         const [pointResponse, starResponse] = await Promise.all([
-          axios.get(`/api/galaxy/${galaxyId}/cash`, {
+          axios.get(`/api/galaxy/me/cash`, {
             headers: {
               Authorization: token,
             },
@@ -65,8 +69,6 @@ const Main = () => {
           console.error("스타 데이터를 가져오는 데 실패했습니다.");
           setImage(null); // 스타 데이터가 없으면 이미지 상태를 null로 설정
         }
-       
-
       } catch (error) {
         console.error("서버 오류:", error);
       }
@@ -93,8 +95,7 @@ const Main = () => {
 
       if (response.status === 200) {
         console.log(response.data);
-        // 페이지를 새로 고침
-        window.location.reload();
+        window.location.reload(); // 페이지를 새로 고침
       } else {
         console.error("새로운 별 생성에 실패했습니다.");
       }
@@ -104,7 +105,41 @@ const Main = () => {
       setCreatingStar(false); // 로딩 상태 해제
     }
   };
+  const handleStartQuestion = async () => {
+    try {
+      const response = await axios.get("/api/galaxy/me/start-question", {
+        headers: {
+          Authorization: token,
+        },
+      });
 
+      if (response.status === 200) {
+      } else {
+        console.error("질문 시작 데이터를 가져오는 데 실패했습니다.");
+      }
+    } catch (error) {
+      console.error("질문 시작 중 오류 발생:", error);
+    }
+  };
+  const handleTodayQuestion = async () => {
+    try {
+      const response = await axios.get("/api/questions/today", {
+        headers: {
+          Authorization: token,
+        },
+      });
+
+      if (response.status === 200) {
+        setTodayQuestion(response.data.subject);
+        const question_id = response.data.question_id;
+        dispatch(main({ question_id: question_id }));
+      } else {
+        console.error("질문 시작 데이터를 가져오는 데 실패했습니다.");
+      }
+    } catch (error) {
+      console.error("질문 시작 중 오류 발생:", error);
+    }
+  };
   return (
     <M.Container>
       <M.Header>
@@ -128,6 +163,7 @@ const Main = () => {
             id="star"
             src={image}
             alt="Star"
+            onClick={handleTodayQuestion}
             style={{ backgroundColor: color }} // 배경 색상 적용
           />
         ) : (
@@ -142,6 +178,8 @@ const Main = () => {
             </button>
           </div>
         )}
+        <button onClick={handleStartQuestion}>질문 시작하기</button>
+        <p onClick={goAnswer}>{todayQuestion}</p>
       </M.body>
 
       <Footer />
