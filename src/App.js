@@ -37,7 +37,6 @@ function App() {
         <Route path="/answer" element={<Answer />} />
         <Route path="/answeropen" element={<AnswerOpen />} />
         <Route path="/answeryet" element={<AnswerYet />} />
-        <Route path="/store" element={<Store />} />
         <Route path="/grouping" element={<Grouping />} />
         <Route path="/main" element={<Main />} />
         <Route path="/questionlist" element={<QuestionList />} />

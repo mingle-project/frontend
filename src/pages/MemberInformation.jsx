@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { useSelector } from 'react-redux';
-import * as M from '../styles/MemberInformationStyles';
-import Arrow from '../assets/arrow.png';
-import Set from '../assets/set.png';
-import MingleLogo from '../assets/minglelogowhite1.png';
-import Pencil from '../assets/pencil.png';
-import Help from '../assets/help.png';
-import Computer from '../assets/computer.png';
-import Logout from '../assets/logout.png';
-import Delete from '../assets/delete.png';
-import Line from '../assets/line.png';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useSelector } from "react-redux";
+import * as M from "../styles/MemberInformationStyles";
+import Arrow from "../assets/arrow.png";
+import Set from "../assets/set.png";
+import MingleLogo from "../assets/minglelogowhite1.png";
+import Pencil from "../assets/pencil.png";
+import Help from "../assets/help.png";
+import Computer from "../assets/computer.png";
+import Logout from "../assets/logout.png";
+import Delete from "../assets/delete.png";
+import Line from "../assets/line.png";
 
 const MemberInformation = () => {
   const [isInvitePopupOpen, setIsInvitePopupOpen] = useState(false);
@@ -70,45 +70,72 @@ const MemberInformation = () => {
   };
 
   const handleCopyCode = () => {
-    const groupCode = 'GD88YB';
+    const groupCode = "GD88YB";
     navigator.clipboard
       .writeText(groupCode)
       .then(() => {
-        alert('그룹코드가 복사되었습니다!');
+        alert("그룹코드가 복사되었습니다!");
       })
       .catch(() => {
-        alert('코드 복사에 실패했습니다. 다시 시도해주세요.');
+        alert("코드 복사에 실패했습니다. 다시 시도해주세요.");
       });
   };
 
   const navigate = useNavigate();
 
   const handleIntroductionClick = () => {
-    navigate('/introduction');
+    navigate("/introduction");
+  };
+
+  const handleMainClick = () => {
+    navigate(`/main`);
   };
 
   const [profileData, setProfileData] = useState(null);
+  const [userData, setUserData] = useState({ user: [] });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const token = useSelector((state) => state.user.token);
   const galaxyId = useSelector((state) => state.user.galaxy_id);
-  console.log('Current token:', token);
+  console.log("Current token:", token);
 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get(`/api/galaxy/1/profile`, {
+        const response = await axios.get(`/api/galaxy/me/profile`, {
           headers: { Authorization: token },
         });
-        setProfileData(response.data);
+        setProfileData(response.data || { user: [], user: [] });
+        setIsLoading(false);
       } catch (err) {
-        console.error('Error details:', err.response);
+
+        console.error('Full error response:', err.response);
+
         setError(err.message);
+        setIsLoading(false);
       }
     };
 
     fetchProfile();
+  }, [token]);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get(`/api/users/me/profile`, {
+          headers: { Authorization: token },
+        });
+        console.log(response.data); // API 응답 구조 확인
+        setUserData(response.data); // users 속성이 포함되어 있는지 확인
+      } catch (err) {
+        console.error('Full error response:', err.response);
+        setError(err.message);
+        setIsLoading(false);
+      }
+    };
+
+    fetchUser();
   }, [token]);
 
   if (isLoading) {
@@ -119,10 +146,14 @@ const MemberInformation = () => {
     return <div>Error: {error}</div>;
   }
 
+  if (!profileData) {
+    return <div>No profile data available</div>;
+  }
+
   return (
     <M.Container>
       <M.Header>
-        <M.Arrow>
+        <M.Arrow onClick={handleMainClick}>
           <img id="Arrow" src={Arrow} />
         </M.Arrow>
         <M.Set>
@@ -151,10 +182,13 @@ const MemberInformation = () => {
         <M.User>
           <M.Name>
             <M.NickName>
-              <p>{profileData.users.me}</p>
+              <p>닉네임</p>
             </M.NickName>
             <M.MemberName>
-              <p>{profileData.user[0].nickname}</p>
+              {/* <p>수연</p> */}
+              {userData && userData.nickname
+                ? userData.nickname
+                : 'No members available'}
             </M.MemberName>
             <M.Change onClick={handleNameClick}>
               <img id="Pencil" src={Pencil} />
@@ -165,7 +199,10 @@ const MemberInformation = () => {
               <p>아이디</p>
             </M.IdTitle>
             <M.IdInformation>
-              <p>{profileData.users[0].username}</p>
+              {/* <p>limsoo</p> */}
+              {userData && userData.username
+                ? userData.username
+                : 'No members available'}
             </M.IdInformation>
           </M.Id>
         </M.User>
@@ -182,15 +219,22 @@ const MemberInformation = () => {
           <M.Group>
             <M.GroupMember>멤버</M.GroupMember>
             <M.GroupMemberName>
-              {profileData.users.map((user) => user.nickname).join(', ')}
+              {profileData.users && profileData.users.length > 0
+                ? profileData.users.map((user) => user.nickname).join(', ')
+                : 'No members available'}
+
             </M.GroupMemberName>
-            <M.GroupMemberId>limsoo0816 seulah03</M.GroupMemberId>
+            <M.GroupMemberId>
+              {profileData.users && profileData.users.length > 0
+                ? profileData.users.map((user) => user.username).join(', ')
+                : 'No members available'}
+            </M.GroupMemberId>
           </M.Group>
         </M.GroupInformation>
       </M.Body>
       <M.Footer>
         <M.ButtonInvite onClick={handleInviteClick}>초대하기</M.ButtonInvite>
-        <M.ButtonLogout onClick={() => console.log('로그아웃 버튼 클릭')}>
+        <M.ButtonLogout onClick={() => console.log("로그아웃 버튼 클릭")}>
           로그아웃
         </M.ButtonLogout>
 
@@ -286,7 +330,7 @@ const MemberInformation = () => {
         {isGroupPopupOpen && (
           <M.GroupPopup>
             <M.GroupPopupName>
-              <p>밍글이</p>
+              <p>{profileData.name}</p>
             </M.GroupPopupName>
             <M.GroupPopup2>
               <M.GroupCloseButton onClick={handleGroupClosePopup}>
@@ -300,7 +344,11 @@ const MemberInformation = () => {
         {isNamePopupOpen && (
           <M.NamePopup>
             <M.NamePopupName>
-              <p>수연</p>
+              <p>
+                {userData && userData.nickname
+                  ? userData.nickname
+                  : 'No members available'}
+              </p>
             </M.NamePopupName>
             <M.NamePopup2>
               <M.NameCloseButton onClick={handleNameClosePopup}>

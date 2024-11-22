@@ -1,34 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import * as M from '../styles/MainStyles.jsx';
-import Footer from '../components/Footer.jsx';
-import Moon from '../assets/earthgray.png';
-import MyPageBtn from '../assets/menu.png';
-import MiniLogo from '../assets/minilogo.svg';
-import PointImg from '../assets/starcoin.png';
-import Cart from '../assets/cart.png';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import * as M from "../styles/MainStyles.jsx";
+import Footer from "../components/Footer.jsx";
+import Moon from "../assets/earthgray.png";
+import MyPageBtn from "../assets/menu.png";
+import MiniLogo from "../assets/minilogo.svg";
+import PointImg from "../assets/starcoin.png";
+import Cart from "../assets/cart.png";
+import { useSelector } from "react-redux";
 
 const Main = () => {
   const [point, setPoint] = useState(0); // 포인트 상태 초기화
-  const [image, setImage] = useState(''); // 이미지 상태 초기화
-  const [color, setColor] = useState(''); // 색상 상태 초기화
+  const [image, setImage] = useState(""); // 이미지 상태 초기화
+  const [color, setColor] = useState(""); // 색상 상태 초기화
   const [creatingStar, setCreatingStar] = useState(false); // 별 생성 상태 초기화
 
   const navigate = useNavigate();
 
   const handleMyPageClick = () => {
-    navigate('/memberinformation');
+
+    navigate('/memberinformation', { state: userInfo });
+
   };
 
   const galaxyId = useSelector((state) => state.user.galaxy_id);
   const token = useSelector((state) => state.user.token);
 
+  const userInfo = useSelector((state) => ({
+    id: state.user.id,
+    pw: state.user.pw,
+    token: state.user.token,
+    galaxy_id: state.user.galaxy_id,
+  }));
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [pointResponse, starResponse, inforResponse] = await Promise.all([
+        const [pointResponse, starResponse] = await Promise.all([
           axios.get(`/api/galaxy/${galaxyId}/cash`, {
             headers: {
               Authorization: token,
@@ -39,17 +48,12 @@ const Main = () => {
               Authorization: token,
             },
           }),
-          axios.get(`/api/galaxy/${galaxyId}/profile`, {
-            headers: {
-              Authorization: token,
-            },
-          }),
         ]);
 
         if (pointResponse.status === 200) {
           setPoint(pointResponse.data.cash); // 포인트 정보 설정
         } else {
-          console.error('포인트 정보를 가져오는 데 실패했습니다.');
+          console.error("포인트 정보를 가져오는 데 실패했습니다.");
         }
 
         if (starResponse.status === 200 && starResponse.data) {
@@ -58,16 +62,13 @@ const Main = () => {
           setColor(starResponse.data.data.color);
           console.log(image);
         } else {
-          console.error('스타 데이터를 가져오는 데 실패했습니다.');
+          console.error("스타 데이터를 가져오는 데 실패했습니다.");
           setImage(null); // 스타 데이터가 없으면 이미지 상태를 null로 설정
         }
-        if (inforResponse.status === 200) {
-          console.log(inforResponse.data);
-        } else {
-          console.error("포인트 정보를 가져오는 데 실패했습니다.");
-        }
+       
+
       } catch (error) {
-        console.error('서버 오류:', error);
+        console.error("서버 오류:", error);
       }
     };
 
@@ -95,10 +96,10 @@ const Main = () => {
         // 페이지를 새로 고침
         window.location.reload();
       } else {
-        console.error('새로운 별 생성에 실패했습니다.');
+        console.error("새로운 별 생성에 실패했습니다.");
       }
     } catch (error) {
-      console.error('별 생성 중 오류 발생:', error);
+      console.error("별 생성 중 오류 발생:", error);
     } finally {
       setCreatingStar(false); // 로딩 상태 해제
     }
@@ -137,7 +138,7 @@ const Main = () => {
               onClick={createNewStar}
               disabled={creatingStar} // 별 생성 중에는 버튼 비활성화
             >
-              {creatingStar ? '별 생성 중...' : '새로운 별 생성하기'}
+              {creatingStar ? "별 생성 중..." : "새로운 별 생성하기"}
             </button>
           </div>
         )}
