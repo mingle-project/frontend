@@ -12,6 +12,7 @@ export const Container = styled.div`
   min-height: 100vh;
   padding: 0;
   box-sizing: border-box;
+  display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -69,4 +70,27 @@ export const Header = styled.div`
     letter-spacing: -1.2px;
   }
 `;
-export const body = styled.div``;
+
+export const body = styled.div`
+  position: absolute;
+  bottom: 400px;
+  z-index: 20;
+  button {
+    margin-top: 10px;
+    width: 198px;
+    height: 38px;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid var(--gray, #606060);
+    background: #f3f3f3;
+    color: #000;
+    text-align: center;
+    font-feature-settings: "liga" off, "clig" off;
+    font-family: "Noto Sans KR";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 100% */
+    letter-spacing: -0.6px;
+  }
+`;

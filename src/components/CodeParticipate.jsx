@@ -73,7 +73,7 @@ const CodeParticipate = () => {
     // Fetch the groupCode from an API
     const fetchGroupCode = async () => {
       try {
-        const response = await axios.get(`/api/galaxy/${galaxyId}/code`, {
+        const response = await axios.get(`/api/galaxy/me/code`, {
           headers: {
             Authorization: token,
           },

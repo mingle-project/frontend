@@ -38,7 +38,7 @@ const GroupingDetail = () => {
     // axios로 서버에 데이터 전송
     try {
       const response = await axios.post(
-        "/api/galaxy", // 실제 API 엔드포인트
+        "/api/galaxy", 
         {
           name,
           gender,
