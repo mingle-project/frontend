@@ -5,8 +5,8 @@ export const Container = styled.div`
   position: relative;
   margin: 0 auto;
   width: 393px;
-  /* height: 100vh; */
-  /* min-height: 100vh; */
+  height: 100vh;
+  min-height: 100vh;
   padding: 0;
   box-sizing: border-box;
   display: flex;
@@ -14,13 +14,24 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: skyblue;
+  background-color: #d9d9d9;
+`;
+export const Backdrop = styled.div`
+  position: absolute;
+  width: 393px;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 2;
 `;
 
 export const Header = styled.div`
   position: relative;
   margin: 0;
-  margin-top: 20px;
+  margin-top: -10px;
   width: 393px;
   padding: 0;
   box-sizing: border-box;
@@ -32,10 +43,10 @@ export const Header = styled.div`
 
 export const Arrow = styled.div`
   position: absolute;
+  top: 4px;
   transform: translateX(-450%);
-  margin: 0 auto;
-  margin-top: 7%;
-  padding: 0;
+  margin: 0 !important;
+  padding: 0 !important;
   box-sizing: border-box;
   align-items: center;
   justify-content: flex-start;
@@ -43,14 +54,15 @@ export const Arrow = styled.div`
   cursor: pointer;
   img {
     width: 32px;
-    height: auto;
-    margin-top: 8%;
+    height: 28px;
+    display: block;
+    margin: 0;
   }
 `;
 
 export const Set = styled.div`
   position: absolute;
-  transform: translateX(300%) translateY(40%);
+  transform: translateX(300%) translateY(-10%);
   margin: 0 !important;
   padding: 0 !important;
   box-sizing: border-box;
@@ -58,6 +70,7 @@ export const Set = styled.div`
   justify-content: flex-start;
   text-align: center;
   display: block;
+  cursor: pointer;
   img {
     width: 45px;
     height: 45px;
@@ -97,8 +110,10 @@ export const Logo = styled.div`
 export const GroupName = styled.div`
   margin: 0;
   padding: 0;
-  margin-top: 5px;
-  font-family: "MaplestoryOTFBold";
+
+  margin-top: 10px;
+  font-family: 'MaplestoryOTFBold';
+
   font-size: 26px;
 `;
 
@@ -109,7 +124,7 @@ export const Pencil = styled.div`
   box-sizing: border-box;
   img {
     margin-left: -70%;
-    margin-top: 13px;
+    margin-top: 18px;
     width: 16px;
   }
 `;
@@ -119,8 +134,10 @@ export const GroupChange = styled.div`
 `;
 
 export const Intimacy = styled.div`
-  margin-top: 10px;
-  font-family: "MaplestoryOTFBold";
+
+  margin-top: 15px;
+  font-family: 'MaplestoryOTFBold';
+
   font-size: 20px;
 `;
 
@@ -131,7 +148,7 @@ export const User = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-top: 15px;
+  margin-top: 20px;
   width: 300px;
   height: 120px;
   border-radius: 10px;
@@ -148,7 +165,7 @@ export const User = styled.div`
 export const Name = styled.div`
   font-family: "MaplestoryOTFBold";
   font-size: 28px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -196,8 +213,10 @@ export const IdInformation = styled.div`
 `;
 
 export const GroupInformation = styled.div`
-  margin-top: 40px;
-  font-family: "MaplestoryOTFBold";
+
+  margin-top: 45px;
+  font-family: 'MaplestoryOTFBold';
+
 `;
 
 export const GroupInformation2 = styled.div`
@@ -211,17 +230,21 @@ export const GroupInformation3 = styled.div`
 `;
 
 export const GroupInformationChange = styled.div`
-  margin-top: 5px;
+  margin-top: 10px;
   img#Pencil {
     width: 18px !important;
     height: auto !important;
+    margin-bottom: 5px;
+    margin-top: -5px;
   }
   cursor: pointer;
 `;
 
 export const GenderInformation = styled.div`
-  margin-top: 20px;
-  font-family: "MaplestoryOTFBold";
+
+  margin-top: 25px;
+  font-family: 'MaplestoryOTFBold';
+
   font-size: 20px;
   display: flex;
   text-align: left;
@@ -237,8 +260,10 @@ export const SexInformation = styled.div`
 `;
 
 export const Age = styled.div`
-  margin-top: 20px;
-  font-family: "MaplestoryOTFBold";
+
+  margin-top: 25px;
+  font-family: 'MaplestoryOTFBold';
+
   font-size: 20px;
   display: flex;
   text-align: left;
@@ -254,19 +279,25 @@ export const AgeInformation = styled.div`
 `;
 
 export const Group = styled.div`
-  margin-top: 20px;
-  font-family: "MaplestoryOTFBold";
+
+  margin-top: 25px;
+  font-family: 'MaplestoryOTFBold';
+
   font-size: 20px;
   display: flex;
   text-align: left;
+  gap: 10px;
 `;
 
 export const GroupMember = styled.div`
-  font-family: "MaplestoryOTFBold";
+
+  font-family: 'MaplestoryOTFBold';
+  margin-right: 30px;
 `;
 
 export const GroupMemberName = styled.div`
-  font-family: "MaplestoryOTFBold";
+  font-family: 'MaplestoryOTFBold';
+  margin-right: 30px;
 `;
 
 export const GroupMemberId = styled.div`
@@ -274,8 +305,10 @@ export const GroupMemberId = styled.div`
 `;
 
 export const Footer = styled.div`
-  margin-top: 80px;
-  font-family: "MaplestoryOTFBold";
+
+  margin-top: 35px;
+  margin-bottom: 25px;
+  font-family: 'MaplestoryOTFBold';
   font-size: 20px;
 `;
 

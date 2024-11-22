@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { styled } from 'styled-components';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import * as M from '../styles/MemberInformationStyles';
@@ -14,6 +15,7 @@ import Delete from '../assets/delete.png';
 import Line from '../assets/line.png';
 import { useDispatch } from 'react-redux';
 import { logout } from '../userSlice';
+import CodeParticipate from '../components/CodeParticipate';
 
 const MemberInformation = () => {
   const [isInvitePopupOpen, setIsInvitePopupOpen] = useState(false);
@@ -25,6 +27,7 @@ const MemberInformation = () => {
   const [isOutPopupOpen, setIsOutPopupOpen] = useState(false);
   const [isDeletePopupOpen, setIsDeletePopupOpen] = useState(false);
   const [isGalaxyPopupOpen, setIsGalaxyPopupOpen] = useState(false);
+  const [groupNameInput, setGroupNameInput] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -144,6 +147,7 @@ const MemberInformation = () => {
         err.response?.data || err.message
       );
       if (err.response?.status == 403) {
+        console.log(galaxyId);
         alert('권한이 없습니다. 다시 확인해주세요.');
       } else {
         alert('그룹 정보 수정에 실패했습니다. 다시 시도해주세요.');
@@ -166,7 +170,8 @@ const MemberInformation = () => {
       console.log('User ID:', userId);
 
       const response = await axios.delete(
-        `/api/groups/${groupId}/members/${userId}`,
+        //`/api/groups/${groupId}/members/${userId}`,
+        `/api/users/me/galaxy`,
         {
           headers: { Authorization: token },
         }
@@ -174,7 +179,7 @@ const MemberInformation = () => {
 
       alert(response.data.message || '그룹에서 탈퇴했습니다.');
 
-      navigate('/main');
+      navigate('/login');
     } catch (err) {
       console.error(
         'Group leave error details:',
@@ -190,6 +195,11 @@ const MemberInformation = () => {
   };
 
   const handleGroupDelete = async () => {
+    if (groupNameInput !== profileData.name) {
+      alert('입력한 그룹 이름이 정확하지 않습니다.');
+      return;
+    }
+
     try {
       const groupId = galaxyId;
       console.log('Group ID to delete:', groupId);
@@ -266,6 +276,7 @@ const MemberInformation = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
+  const [isGroupingBtnClicked, setIsGroupingBtnClicked] = useState(false);
 
   const token = useSelector((state) => state.user.token);
   const galaxyId = useSelector((state) => state.user.galaxy_id);
@@ -299,7 +310,7 @@ const MemberInformation = () => {
         console.log(response.data);
         setUserData(response.data);
       } catch (err) {
-        console.error("Full error response:", err.response);
+        console.error('Full error response:', err.response);
         setError(err.message);
         setIsLoading(false);
       }
@@ -386,11 +397,9 @@ const MemberInformation = () => {
               <p>아이디</p>
             </M.IdTitle>
             <M.IdInformation>
-
               {userData && userData.username
                 ? userData.username
                 : 'No members available'}
-
             </M.IdInformation>
           </M.Id>
         </M.User>
@@ -413,20 +422,24 @@ const MemberInformation = () => {
             <M.GroupMember>멤버</M.GroupMember>
             <M.GroupMemberName>
               {profileData.users && profileData.users.length > 0
-
                 ? profileData.users.map((user) => user.nickname).join(', ')
                 : 'No members available'}
-
             </M.GroupMemberName>
             <M.GroupMemberId>
               {profileData.users && profileData.users.length > 0
-                ? profileData.users.map((user) => user.username).join(", ")
-                : "No members available"}
+                ? profileData.users.map((user) => user.username).join(', ')
+                : 'No members available'}
             </M.GroupMemberId>
           </M.Group>
         </M.GroupInformation>
       </M.Body>
       <M.Footer>
+        {isGroupingBtnClicked && (
+          <>
+            <M.Backdrop onClick={() => setIshandleInviteBtnClicked(false)} />{' '}
+            <CodeParticipate />
+          </>
+        )}
         <M.ButtonInvite onClick={handleInviteClick}>초대하기</M.ButtonInvite>
         <M.ButtonLogout onClick={handleLogout}>로그아웃</M.ButtonLogout>
 
@@ -510,7 +523,12 @@ const MemberInformation = () => {
                 <p>삭제를 확인하려면</p>
                 <p>아래에 그룹 이름을 입력해 주세요</p>
               </M.DeletePopupSmall2>
-              <M.TextInput type="text" placeholder="그룹 이름 입력" />
+              <M.TextInput
+                type="text"
+                placeholder="그룹 이름 입력"
+                value={groupNameInput}
+                onChange={(e) => setGroupNameInput(e.target.value)}
+              />
             </M.DeletePopupMiddle>
             <M.DeletePopup2>
               <M.DeleteCloseButton onClick={handleDeleteClosePopup}>

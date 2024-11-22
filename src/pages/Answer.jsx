@@ -1,14 +1,18 @@
 import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Header1 from "../components/Header1";
 import * as A from "../styles/AnswerStyles";
 import Blue from "../assets/ministarblue.png";
 import Red from "../assets/ministarred.png";
 import Yellow from "../assets/ministaryellow.png";
+import axios from "axios";
 
 const Answer = () => {
   const navigate = useNavigate();
   const [answer, setAnswer] = useState("");
+  const token = useSelector((state) => state.user.token);
+  const galaxyId = useSelector((state) => state.user.galaxy_id);
 
   const handleRegister = () => {
     if (answer.trim() === "") {
@@ -20,11 +24,29 @@ const Answer = () => {
     setAnswer("");
   };
 
-  const handleCancel = () => {
+  const handleCancel = async () => {
     const confirmCancel = window.confirm("답변 등록을 취소하시겠습니까?");
-    if (confirmCancel) {
-      setAnswer("");
-      navigate("/main"); // 홈 화면으로 이동 (라우터 경로는 원하는 대로 수정)
+    if (!confirmCancel) return;
+
+    try {
+      const response = await axios.post(
+        `/api/questions/${galaxyId}/forgive`, // 엔드포인트 경로
+        { content: "" }, // 요청 body
+        {
+          headers: {
+            Authorization: token, // 인증 토큰
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        alert(response.data.message); // "대답을 포기하였습니다."
+        setAnswer(""); // 입력된 답변 초기화
+        navigate("/main"); // 홈 화면으로 이동
+      }
+    } catch (error) {
+      console.error("답변 포기 처리 중 에러 발생:", error);
+      alert("답변 포기 처리 중 문제가 발생했습니다. 다시 시도해주세요.");
     }
   };
 
