@@ -19,8 +19,8 @@ import AnswerOpen from "./pages/AnswerOpen";
 import AnswerYet from "./pages/AnswerYet";
 import QuestionList from "./pages/QuestionList";
 import Minformation from "./pages/MemberInformation";
-import "./App.css";
 import IntroductionTransition from "./pages/IntroductionTransition";
+
 
 function App() {
   return (
