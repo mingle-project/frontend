@@ -19,8 +19,8 @@ import AnswerOpen from "./pages/AnswerOpen";
 import AnswerYet from "./pages/AnswerYet";
 import QuestionList from "./pages/QuestionList";
 import Minformation from "./pages/MemberInformation";
+import IntroductionTransition from "./pages/IntroductionTransition";
 
-import "./App.css";
 
 function App() {
   return (
@@ -37,7 +37,6 @@ function App() {
         <Route path="/answer" element={<Answer />} />
         <Route path="/answeropen" element={<AnswerOpen />} />
         <Route path="/answeryet" element={<AnswerYet />} />
-        <Route path="/answer" element={<Answer />} />
         <Route path="/grouping" element={<Grouping />} />
         <Route path="/main" element={<Main />} />
         <Route path="/questionlist" element={<QuestionList />} />
