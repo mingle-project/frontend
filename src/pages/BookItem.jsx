@@ -1,6 +1,6 @@
 import { React, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Header1 from "../components/Header1";
+import Header from "../components/Header";
 import Footer from "../components/Footer";
 import * as BI from "../styles/BookItemStyles";
 import Violet from "../assets/minglelogoviolet.png";
@@ -10,11 +10,12 @@ import Crown from "../assets/crown.png";
 import PartyHat from "../assets/partyhat.png";
 import Aura from "../assets/aurapink.png";
 import Wearing from "../assets/partyhat.png";
+import Arrow from "../assets/arrow.png";
 
 const BookItem = () => {
   return (
     <BI.Container>
-      <Header1 />
+      <Header pageurl="/book" img={Arrow} />
       <BI.MainStar>
         <img id="Violet" src={Violet} />
       </BI.MainStar>

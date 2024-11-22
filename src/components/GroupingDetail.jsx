@@ -89,25 +89,25 @@ const GroupingDetail = () => {
         {/* 성별 선택 */}
         <div>
           <p>성별</p>
-          <label className={gender === "여성" ? "selected" : ""}>
+          <label className={gender === "여자" ? "selected" : ""}>
             <input
               type="radio"
               name="gender"
-              value="여성"
-              checked={gender === "여성"}
+              value="여자"
+              checked={gender === "여자"}
               onChange={handleGenderChange}
             />
-            여성
+            여자
           </label>
-          <label className={gender === "남성" ? "selected" : ""}>
+          <label className={gender === "남자" ? "selected" : ""}>
             <input
               type="radio"
               name="gender"
-              value="남성"
-              checked={gender === "남성"}
+              value="남자"
+              checked={gender === "남자"}
               onChange={handleGenderChange}
             />
-            남성
+            남자
           </label>
           <label className={gender === "혼성" ? "selected" : ""}>
             <input
