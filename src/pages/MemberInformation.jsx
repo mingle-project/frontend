@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { styled } from 'styled-components';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import * as M from '../styles/MemberInformationStyles';
@@ -15,7 +14,6 @@ import Delete from '../assets/delete.png';
 import Line from '../assets/line.png';
 import { useDispatch } from 'react-redux';
 import { logout } from '../userSlice';
-import CodeParticipate from '../components/CodeParticipate';
 
 const MemberInformation = () => {
   const [isInvitePopupOpen, setIsInvitePopupOpen] = useState(false);
@@ -276,7 +274,6 @@ const MemberInformation = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
-  const [isGroupingBtnClicked, setIsGroupingBtnClicked] = useState(false);
 
   const token = useSelector((state) => state.user.token);
   const galaxyId = useSelector((state) => state.user.galaxy_id);
@@ -434,12 +431,6 @@ const MemberInformation = () => {
         </M.GroupInformation>
       </M.Body>
       <M.Footer>
-        {isGroupingBtnClicked && (
-          <>
-            <M.Backdrop onClick={() => setIshandleInviteBtnClicked(false)} />{' '}
-            <CodeParticipate />
-          </>
-        )}
         <M.ButtonInvite onClick={handleInviteClick}>초대하기</M.ButtonInvite>
         <M.ButtonLogout onClick={handleLogout}>로그아웃</M.ButtonLogout>
 

@@ -25,7 +25,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://15.165.226.15:8080",
+  "proxy": "https://minglestar.org",
   "eslintConfig": {
     "extends": [
       "react-app",
