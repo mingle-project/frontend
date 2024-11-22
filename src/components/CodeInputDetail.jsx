@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import * as L from "../styles/LandingStyles";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const CodeInputDetail = () => {
   const token = useSelector((state) => state.user.token);
   const [groupCode, setGroupCode] = useState(""); // State to manage the group code input
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setGroupCode(e.target.value); // Update state with the input value
@@ -18,10 +20,9 @@ const CodeInputDetail = () => {
     }
 
     try {
-      // POST request to submit the group code
       const response = await axios.post(
         "/api/galaxy/join",
-        { code: groupCode },
+        { group_code: groupCode },
         {
           headers: {
             Authorization: token,
@@ -29,10 +30,9 @@ const CodeInputDetail = () => {
         }
       );
 
-      // Check for successful response
       if (response.status === 200) {
         alert("그룹에 성공적으로 참여했습니다!");
-        // You can redirect or update the UI based on the response
+        navigate("/main");
       } else {
         alert("잘못된 코드입니다. 다시 시도해주세요.");
       }

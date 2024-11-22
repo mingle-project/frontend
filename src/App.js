@@ -19,22 +19,8 @@ import AnswerOpen from "./pages/AnswerOpen";
 import AnswerYet from "./pages/AnswerYet";
 import QuestionList from "./pages/QuestionList";
 import Minformation from "./pages/MemberInformation";
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Landing from './pages/Landing';
-import GlobalStyle from './pages/GlobalStyles';
-import './App.css';
-import Login from './pages/Login';
-import SignUp from './pages/SignUp';
-import Grouping from './pages/Grouping';
-import Main from './pages/Main';
-import Book from './pages/Book';
-import BookItem from './pages/BookItem';
-import StoreItem from './pages/StoreItem';
-import Answer from './pages/Answer';
-import QuestionList from './pages/QuestionList';
-import Minformation from './pages/MemberInformation';
-import Introduction from './pages/IntroductionTransition';
 
+import "./App.css";
 
 function App() {
   return (
@@ -51,7 +37,6 @@ function App() {
         <Route path="/answer" element={<Answer />} />
         <Route path="/answeropen" element={<AnswerOpen />} />
         <Route path="/answeryet" element={<AnswerYet />} />
-        <Route path="/storeitem" element={<StoreItem />} />
         <Route path="/answer" element={<Answer />} />
         <Route path="/grouping" element={<Grouping />} />
         <Route path="/main" element={<Main />} />

@@ -105,8 +105,7 @@ const MemberInformation = () => {
         setProfileData(response.data || { user: [], user: [] });
         setIsLoading(false);
       } catch (err) {
-
-        console.error('Full error response:', err.response);
+        console.error("Full error response:", err.response);
 
         setError(err.message);
         setIsLoading(false);
@@ -122,10 +121,11 @@ const MemberInformation = () => {
         const response = await axios.get(`/api/users/me/profile`, {
           headers: { Authorization: token },
         });
-        setUserData(response.data || { user: [], user: [] });
+        setUserData(response.data || { user: "", user: "" });
+        console.log("회원정보", response.data.username);
         setIsLoading(false);
       } catch (err) {
-        console.error('Full error response:', err.response);
+        console.error("Full error response:", err.response);
         setError(err.message);
         setIsLoading(false);
       }
@@ -183,8 +183,8 @@ const MemberInformation = () => {
             <M.MemberName>
               {/* <p>수연</p> */}
               {userData.users && userData.users.length > 0
-                ? userData.users.map((user) => user.nickname).join(', ')
-                : 'No members available'}
+                ? userData.users.map((user) => user.nickname).join(", ")
+                : "No members available"}
             </M.MemberName>
             <M.Change onClick={handleNameClick}>
               <img id="Pencil" src={Pencil} />
@@ -197,8 +197,8 @@ const MemberInformation = () => {
             <M.IdInformation>
               {/* <p>limsoo</p> */}
               {userData.users && userData.users.length > 0
-                ? userData.users.map((user) => user.username).join(', ')
-                : 'No members available'}
+                ? userData.users.map((user) => user.username).join(", ")
+                : "No members available"}
             </M.IdInformation>
           </M.Id>
         </M.User>
@@ -216,14 +216,13 @@ const MemberInformation = () => {
             <M.GroupMember>멤버</M.GroupMember>
             <M.GroupMemberName>
               {profileData.users && profileData.users.length > 0
-                ? profileData.users.map((user) => user.nickname).join(', ')
-                : 'No members available'}
-
+                ? profileData.users.map((user) => user.nickname).join(", ")
+                : "No members available"}
             </M.GroupMemberName>
             <M.GroupMemberId>
               {profileData.users && profileData.users.length > 0
-                ? profileData.users.map((user) => user.username).join(', ')
-                : 'No members available'}
+                ? profileData.users.map((user) => user.username).join(", ")
+                : "No members available"}
             </M.GroupMemberId>
           </M.Group>
         </M.GroupInformation>

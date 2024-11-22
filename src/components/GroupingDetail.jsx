@@ -97,7 +97,7 @@ const GroupingDetail = () => {
               checked={gender === "여성"}
               onChange={handleGenderChange}
             />
-            여자
+            여성
           </label>
           <label className={gender === "남성" ? "selected" : ""}>
             <input
@@ -107,7 +107,7 @@ const GroupingDetail = () => {
               checked={gender === "남성"}
               onChange={handleGenderChange}
             />
-            남자
+            남성
           </label>
           <label className={gender === "혼성" ? "selected" : ""}>
             <input
@@ -217,14 +217,13 @@ const GroupingDetail = () => {
         <button id="completebtn" onClick={handleComplete}>
           완료
         </button>
-
-        {isCompleteBtnClicked && (
-          <>
-            <L.Backdrop onClick={() => setIsCompleteBtnClicked(false)} />{" "}
-            <CodeParticipate />
-          </>
-        )}
       </L.GroupingDetailForm>
+      {isCompleteBtnClicked && (
+        <>
+          <L.Backdrop onClick={() => setIsCompleteBtnClicked(false)} />{" "}
+          <CodeParticipate />
+        </>
+      )}
     </L.GroupingDetail>
   );
 };
