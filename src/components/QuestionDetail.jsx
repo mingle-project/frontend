@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import * as Q from "../styles/QuestionListStyles.jsx";
 import axios from "axios"; // axios 임포트
 import Ministarpink from "../assets/ministarpink.png";
@@ -14,6 +15,12 @@ const QuestionDetail = () => {
   const [isLoading, setIsLoading] = useState(true); // 로딩 상태
   const [error, setError] = useState(null); // 에러 상태
   const token = useSelector((state) => state.user.token);
+  const navigate = useNavigate();
+  const goAnswerOpen = () => {
+    navigate("/answeropen", {
+      state: { questionId: questions.question_id }, // questionId를 state로 전달
+    });
+  };
 
   const images = [
     { id: "Ministarpink", src: Ministarpink },
@@ -74,7 +81,7 @@ const QuestionDetail = () => {
               />
             </Q.MainImg>
 
-            <Q.QuestionText>
+            <Q.QuestionText onClick={goAnswerOpen}>
               <p style={{ display: "inline" }}>{questionData.subject}</p>
               <p id="date" style={{ display: "inline", marginLeft: "10px" }}>
                 {questionData.date}
