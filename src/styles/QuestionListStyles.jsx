@@ -8,7 +8,7 @@ export const Container = styled.div`
   height: 852px;
   overflow: hidden;
   margin-top: 0px;
-  background-color: #d9d9d9;
+  background-color: #f9f9f9;
   min-height: 100vh;
   padding: 0;
   box-sizing: border-box;

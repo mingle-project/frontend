@@ -4,8 +4,10 @@ export const Container = styled.div`
   position: relative;
   margin: 0 auto;
   width: 393px;
+
   height: 852px;
   background-color: #d9d9d9;
+
   padding: 0;
   box-sizing: border-box;
   display: flex;
@@ -56,7 +58,7 @@ export const BottomBackground = styled.div`
 
 export const BottomBar = styled.div`
   position: fixed;
-  top: 440px;
+  top: 545px;
   width: 96px;
   height: 5px;
   img {
