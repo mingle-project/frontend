@@ -6,7 +6,7 @@ export const Container = styled.div`
   width: 393px;
   height: 100%;
   min-height: 100vh;
-  background-color: #d9d9d9;
+  background-color: #f9f9f9;
   padding: 0;
   box-sizing: border-box;
   display: flex;
