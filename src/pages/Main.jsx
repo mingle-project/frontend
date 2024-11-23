@@ -176,7 +176,11 @@ const Main = () => {
 
         <div>
           <p>{questionMessage}</p>
-          {todayQuestion && <p onClick={goAnswer}>{todayQuestion}</p>}
+          {todayQuestion && (
+            <p onClick={goAnswer} style={{ cursor: "pointer" }}>
+              {todayQuestion}
+            </p>
+          )}
         </div>
       </M.body>
 

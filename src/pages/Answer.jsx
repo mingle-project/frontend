@@ -14,16 +14,26 @@ const Answer = () => {
   const token = useSelector((state) => state.user.token); // 사용자 토큰 가져오기
   const questionId = useSelector((state) => state.user.question_id); // galaxyId 가져오기
   const [todayQuestion, setTodayQuestion] = useState("");
-
+  console.log(questionId);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/questions/today", {
+        const response = await axios.get(`/api/galaxy/questions`, {
           headers: {
             Authorization: token,
           },
         }); // 여기에 실제 API 엔드포인트를 넣어주세요.
-        setTodayQuestion(response.data.subject);
+
+        const questionData = response.data.questions.find(
+          (question) => question.question_id === questionId
+        );
+
+        // questionData가 존재하면 subject를 설정
+        if (questionData) {
+          setTodayQuestion(questionData.subject);
+        } else {
+          console.error("일치하는 question_id를 찾을 수 없습니다.");
+        }
       } catch (err) {
         console.error("데이터를 가져오는 데 실패했습니다."); // 에러 처리
       }
@@ -103,9 +113,7 @@ const Answer = () => {
         <img src={Red} alt="Red Star" />
         <img src={Yellow} alt="Yellow Star" />
       </A.StarIcons>
-      <A.QuestionText>
-        너라면 하루동안 동물이 될 수 있다면 뭐가 되고 싶어?
-      </A.QuestionText>
+      <A.QuestionText>{todayQuestion}</A.QuestionText>
       <A.AnswerInput
         value={answer}
         onChange={(e) => setAnswer(e.target.value)} // 입력값을 상태에 업데이트
