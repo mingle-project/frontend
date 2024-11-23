@@ -246,6 +246,6 @@ export const Stars = styled.div`
 `;
 export const LandingImg = styled.div`
   position: absolute;
-  bottom: -4px;
+  bottom: 280px;
   height: 50px;
 `;
