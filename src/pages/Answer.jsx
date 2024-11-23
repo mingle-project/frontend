@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Header1 from "../components/Header1";
@@ -10,18 +10,59 @@ import axios from "axios";
 
 const Answer = () => {
   const navigate = useNavigate();
-  const [answer, setAnswer] = useState("");
-  const token = useSelector((state) => state.user.token);
-  const galaxyId = useSelector((state) => state.user.galaxy_id);
+  const [answer, setAnswer] = useState(""); // 답변을 관리하는 state
+  const token = useSelector((state) => state.user.token); // 사용자 토큰 가져오기
+  const questionId = useSelector((state) => state.user.question_id); // galaxyId 가져오기
+  const [todayQuestion, setTodayQuestion] = useState("");
 
-  const handleRegister = () => {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/api/questions/today", {
+          headers: {
+            Authorization: token,
+          },
+        }); // 여기에 실제 API 엔드포인트를 넣어주세요.
+        setTodayQuestion(response.data.subject);
+      } catch (err) {
+        console.error("데이터를 가져오는 데 실패했습니다."); // 에러 처리
+      }
+    };
+
+    fetchData(); // 데이터 가져오기 호출
+  }, []); // 의존성 배열이 빈 배열이므로 컴포넌트가 마운트될 때만 실행
+  // 답변 등록 처리 함수
+  const handleRegister = async () => {
     if (answer.trim() === "") {
       alert("답변을 입력해주세요.");
       return;
     }
-    alert("답변이 등록되었습니다.");
-    // 여기서 서버로 답변 데이터를 보낼 수 있음
-    setAnswer("");
+
+    try {
+      const response = await axios.post(
+        `/api/questions/${questionId}/answers`,
+        { content: answer },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+
+      if (response.status === 201) {
+        alert("답변이 등록되었습니다.");
+        setAnswer("");
+        navigate("/main");
+      } else {
+        alert("답변 등록에 실패했습니다. 다시 시도해주세요.");
+      }
+    } catch (error) {
+      console.error("답변 등록 중 오류 발생:", error);
+      console.log(answer);
+      console.log("퀘스천 아이디", questionId);
+
+      alert("서버 오류가 발생했습니다. 다시 시도해주세요.");
+    }
   };
 
   const handleCancel = async () => {
@@ -30,7 +71,7 @@ const Answer = () => {
 
     try {
       const response = await axios.post(
-        `/api/questions/${galaxyId}/forgive`, // 엔드포인트 경로
+        `/api/questions/${questionId}/answers`, // 엔드포인트 경로
         { content: "" }, // 요청 body
         {
           headers: {
@@ -39,13 +80,16 @@ const Answer = () => {
         }
       );
 
-      if (response.status === 200) {
+      if (response.status === 201) {
         alert(response.data.message); // "대답을 포기하였습니다."
         setAnswer(""); // 입력된 답변 초기화
+
         navigate("/main"); // 홈 화면으로 이동
       }
     } catch (error) {
       console.error("답변 포기 처리 중 에러 발생:", error);
+      console.log(answer);
+      console.log("퀘스천 아이디", questionId);
       alert("답변 포기 처리 중 문제가 발생했습니다. 다시 시도해주세요.");
     }
   };
@@ -54,14 +98,14 @@ const Answer = () => {
     <A.Container>
       <Header1 />
       <A.StarIcons>
-        <img src={Blue} />
-        <img src={Red} />
-        <img src={Yellow} />
+        <img src={Blue} alt="Blue Star" />
+        <img src={Red} alt="Red Star" />
+        <img src={Yellow} alt="Yellow Star" />
       </A.StarIcons>
-      <A.QuestionText>오늘 점심 메뉴로 뭐 드셨나요?</A.QuestionText>
+      <A.QuestionText>{todayQuestion}</A.QuestionText>
       <A.AnswerInput
         value={answer}
-        onChange={(e) => setAnswer(e.target.value)}
+        onChange={(e) => setAnswer(e.target.value)} // 입력값을 상태에 업데이트
       />
       <A.ButtonGroup>
         <A.Button onClick={handleRegister}>답변 등록하기</A.Button>
