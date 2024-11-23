@@ -56,7 +56,7 @@ export const BottomBackground = styled.div`
 
 export const BottomBar = styled.div`
   position: fixed;
-  top: 440px;
+  top: 545px;
   width: 96px;
   height: 5px;
   img {

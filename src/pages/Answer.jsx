@@ -102,7 +102,9 @@ const Answer = () => {
         <img src={Red} alt="Red Star" />
         <img src={Yellow} alt="Yellow Star" />
       </A.StarIcons>
-      <A.QuestionText>{todayQuestion}</A.QuestionText>
+      <A.QuestionText>
+        너라면 하루동안 동물이 될 수 있다면 뭐가 되고 싶어?
+      </A.QuestionText>
       <A.AnswerInput
         value={answer}
         onChange={(e) => setAnswer(e.target.value)} // 입력값을 상태에 업데이트
