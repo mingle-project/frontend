@@ -112,7 +112,7 @@ export const GroupName = styled.div`
   padding: 0;
 
   margin-top: 10px;
-  font-family: 'MaplestoryOTFBold';
+  font-family: "MaplestoryOTFBold";
 
   font-size: 26px;
 `;
@@ -134,9 +134,8 @@ export const GroupChange = styled.div`
 `;
 
 export const Intimacy = styled.div`
-
   margin-top: 15px;
-  font-family: 'MaplestoryOTFBold';
+  font-family: "MaplestoryOTFBold";
 
   font-size: 20px;
 `;
@@ -213,10 +212,8 @@ export const IdInformation = styled.div`
 `;
 
 export const GroupInformation = styled.div`
-
   margin-top: 45px;
-  font-family: 'MaplestoryOTFBold';
-
+  font-family: "MaplestoryOTFBold";
 `;
 
 export const GroupInformation2 = styled.div`
@@ -241,9 +238,8 @@ export const GroupInformationChange = styled.div`
 `;
 
 export const GenderInformation = styled.div`
-
   margin-top: 25px;
-  font-family: 'MaplestoryOTFBold';
+  font-family: "MaplestoryOTFBold";
 
   font-size: 20px;
   display: flex;
@@ -260,9 +256,8 @@ export const SexInformation = styled.div`
 `;
 
 export const Age = styled.div`
-
   margin-top: 25px;
-  font-family: 'MaplestoryOTFBold';
+  font-family: "MaplestoryOTFBold";
 
   font-size: 20px;
   display: flex;
@@ -279,9 +274,8 @@ export const AgeInformation = styled.div`
 `;
 
 export const Group = styled.div`
-
   margin-top: 25px;
-  font-family: 'MaplestoryOTFBold';
+  font-family: "MaplestoryOTFBold";
 
   font-size: 20px;
   display: flex;
@@ -290,13 +284,12 @@ export const Group = styled.div`
 `;
 
 export const GroupMember = styled.div`
-
-  font-family: 'MaplestoryOTFBold';
+  font-family: "MaplestoryOTFBold";
   margin-right: 30px;
 `;
 
 export const GroupMemberName = styled.div`
-  font-family: 'MaplestoryOTFBold';
+  font-family: "MaplestoryOTFBold";
   margin-right: 30px;
 `;
 
@@ -305,10 +298,9 @@ export const GroupMemberId = styled.div`
 `;
 
 export const Footer = styled.div`
-
   margin-top: 35px;
   margin-bottom: 25px;
-  font-family: 'MaplestoryOTFBold';
+  font-family: "MaplestoryOTFBold";
   font-size: 20px;
 `;
 
@@ -361,8 +353,8 @@ export const SetPopup = styled.div`
 `;
 
 export const SetPopupHelp = styled.div`
-  font-family: "MaplestoryOTFBold";
-  font-size: 15px;
+  font-family: "omyu_pretty";
+  font-size: 20px;
   color: #606060;
   border: none;
   border-radius: 20px;
@@ -372,13 +364,13 @@ export const SetPopupHelp = styled.div`
   justify-content: center;
   align-items: center;
   width: 250px;
-  gap: 80px;
+  gap: 90px;
   cursor: pointer;
 `;
 
 export const SetPopupIntroduction = styled.div`
-  font-family: "MaplestoryOTFBold";
-  font-size: 15px;
+  font-family: "omyu_pretty";
+  font-size: 20px;
   color: #606060;
   border: none;
   border-radius: 20px;
@@ -400,8 +392,8 @@ export const SetPopupIntroduction = styled.div`
 // `;
 
 export const SetPopupOut = styled.div`
-  font-family: "MaplestoryOTFBold";
-  font-size: 15px;
+  font-family: "omyu_pretty";
+  font-size: 20px;
   color: #606060;
   border: none;
   border-radius: 20px;
@@ -411,13 +403,13 @@ export const SetPopupOut = styled.div`
   justify-content: center;
   align-items: center;
   width: 250px;
-  gap: 50px;
+  gap: 55px;
   cursor: pointer;
 `;
 
 export const SetPopupDelete = styled.div`
-  font-family: "MaplestoryOTFBold";
-  font-size: 15px;
+  font-family: "omyu_pretty";
+  font-size: 20px;
   color: #606060;
   border: none;
   border-radius: 20px;
@@ -427,7 +419,7 @@ export const SetPopupDelete = styled.div`
   justify-content: center;
   align-items: center;
   width: 250px;
-  gap: 58px;
+  gap: 65px;
   margin-left: 5px;
   cursor: pointer;
 `;
@@ -441,7 +433,7 @@ export const SetPopup2 = styled.div`
 `;
 
 export const SetCloseButton = styled.div`
-  font-family: "MaplestoryOTFBold";
+  font-family: "omyu_pretty";
   background-color: #606060;
   color: white;
   border: none;
@@ -449,7 +441,7 @@ export const SetCloseButton = styled.div`
   border-radius: 18px;
   width: 150px;
   height: 30px;
-  font-size: 15px;
+  font-size: 21px;
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -866,9 +858,84 @@ export const GalaxyPopup = styled.div`
   gap: 12px;
 `;
 
-export const GalaxyPopupContent = styled.div``;
+export const GalaxyPopupContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 
-export const GalaxyPopupActions = styled.div``;
+  h3 {
+    text-align: center;
+    font-size: 1.5em;
+    color: #333;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    strong {
+      font-size: 1em;
+      color: #555;
+      margin-right: 20px;
+    }
+
+    select {
+      width: 65%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      font-size: 0.9em;
+      margin-bottom: 10px;
+    }
+  }
+`;
+
+export const GalaxyPopupActions = styled.div`
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+`;
+
+export const GalaxyPopupActionClosebutton = styled.div`
+  font-family: "MaplestoryOTFBold";
+  background-color: #606060;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 18px;
+  width: 150px;
+  font-size: 20px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #525151;
+  }
+`;
+
+export const GalaxyPopupActionChangebutton = styled.div`
+  font-family: "MaplestoryOTFBold";
+  background-color: #606060;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 18px;
+  width: 150px;
+  font-size: 20px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #525151;
+  }
+`;
 
 export const Popup = styled.div`
   position: fixed;
@@ -888,7 +955,7 @@ export const Popup = styled.div`
 `;
 
 export const GroupCode = styled.div`
-  font-family: "MaplestoryOTFBold";
+  /* font-family: "MaplestoryOTFBold";
   font-size: 20px;
   color: black;
   border: 2px solid black;
@@ -897,13 +964,39 @@ export const GroupCode = styled.div`
   text-align: center;
   display: inline-block;
   width: 200px;
-  margin-bottom: 11px;
+  margin-bottom: 11px; */
+  margin-bottom: 10px;
+  width: 198px;
+  height: 38px;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid var(--gray, #606060);
+  background: #f3f3f3;
+  color: #000;
+  text-align: center;
+  font-feature-settings: "liga" off, "clig" off;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 100% */
+  letter-spacing: -0.6px;
 `;
 
 export const PopupContent = styled.div`
-  font-family: "MaplestoryOTFBold";
+  /* font-family: 'MaplestoryOTFBold';
   font-size: 15px;
-  color: black;
+  color: black; */
+  margin-bottom: 5px;
+  color: #000;
+  text-align: center;
+  font-feature-settings: "liga" off, "clig" off;
+  font-family: "Noto Sans KR";
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 153.846% */
+  letter-spacing: -0.39px;
 `;
 
 export const CopyButton = styled.button`
