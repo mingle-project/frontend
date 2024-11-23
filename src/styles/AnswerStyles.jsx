@@ -30,13 +30,19 @@ export const StarIcons = styled.div`
   }
 `;
 
-export const QuestionText = styled.h2`
+export const QuestionText = styled.div`
   position: absolute;
   font-size: 20px;
   font-weight: bold;
-  margin-bottom: 20px;
   color: #606060;
   top: 270px;
+  width: 90%; /* 전체 컨테이너 대비 너비 설정 */
+  max-width: 70%; /* 최대 너비 제한 */
+  margin: 0 auto; /* 좌우 중앙 정렬 */
+  text-align: center; /* 텍스트 가운데 정렬 */
+  padding: 10px 20px; /* 텍스트 내부 여백 */
+  box-sizing: border-box; /* 패딩 포함 크기 조정 */
+  word-wrap: break-word; /* 긴 텍스트 줄바꿈 처리 */
 `;
 
 export const AnswerInput = styled.textarea`

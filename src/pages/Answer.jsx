@@ -52,7 +52,7 @@ const Answer = () => {
       if (response.status === 201) {
         alert("답변이 등록되었습니다.");
         setAnswer("");
-        navigate("/main");
+        navigate("/answeropen");
       } else {
         alert("답변 등록에 실패했습니다. 다시 시도해주세요.");
       }
@@ -61,7 +61,8 @@ const Answer = () => {
       console.log(answer);
       console.log("퀘스천 아이디", questionId);
 
-      alert("서버 오류가 발생했습니다. 다시 시도해주세요.");
+      alert("오늘 이미 답변을 완료했습니다 내일 다시 와주세요.");
+      navigate("/main");
     }
   };
 
