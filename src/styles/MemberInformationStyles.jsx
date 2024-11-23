@@ -14,7 +14,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: #d9d9d9;
+  background-color: #f9f9f9;
 `;
 export const Backdrop = styled.div`
   position: absolute;
