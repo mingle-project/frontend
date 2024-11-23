@@ -6,7 +6,7 @@ export const Container = styled.div`
   width: 393px;
   height: 852px;
   min-height: 100vh;
-  background-color: #d9d9d9;
+  background-color: #f9f9f9;
   padding: 0;
   box-sizing: border-box;
   display: flex;
@@ -23,7 +23,7 @@ export const StarIcons = styled.div`
   gap: 40px;
   position: relative;
   margin-top: 70px;
-  top: -270px;
+  top: -300px;
   img {
     width: 25px;
     height: 25px;

@@ -6,7 +6,7 @@ export const Container = styled.div`
   width: 393px;
   height: 852px;
   min-height: 100vh;
-  background-color: #d9d9d9;
+  background-color: #f9f9f9;
   padding: 0;
   box-sizing: border-box;
   display: flex;
@@ -40,7 +40,7 @@ export const BottomBackground = styled.div`
 
 export const BottomBar = styled.div`
   position: absolute;
-  top: 480px;
+  top: 545px;
   width: 96px;
   height: 5px;
   img {
@@ -51,7 +51,7 @@ export const BottomBar = styled.div`
 
 export const Crown = styled.div`
   position: absolute;
-  top: 540px;
+  top: 620px;
   left: 45px;
   img {
     width: 71px;
@@ -61,7 +61,7 @@ export const Crown = styled.div`
 
 export const PartyHat = styled.div`
   position: absolute;
-  top: 520px;
+  top: 600px;
   left: 155px;
   img {
     width: 90px;
@@ -71,7 +71,7 @@ export const PartyHat = styled.div`
 
 export const ItemText = styled.div`
   position: absolute;
-  top: 510px;
+  top: 590px;
   left: 50px;
   font-size: 14px;
   color: #606060;
@@ -80,7 +80,7 @@ export const ItemText = styled.div`
 
 export const AuraText = styled.div`
   position: absolute;
-  top: 620px;
+  top: 700px;
   left: 50px;
   font-size: 14px;
   color: #606060;
@@ -89,7 +89,7 @@ export const AuraText = styled.div`
 
 export const Aura = styled.div`
   position: absolute;
-  top: 640px;
+  top: 720px;
   left: 30px;
   img {
     width: 100px;
