@@ -4,7 +4,7 @@ export const Container = styled.div`
   position: relative;
   margin: 0 auto;
   width: 393px;
-  height: 100%;
+  height: 852px;
   min-height: 100vh;
   background-color: #d9d9d9;
   padding: 0;
@@ -35,7 +35,7 @@ export const QuestionText = styled.div`
   font-size: 20px;
   font-weight: bold;
   color: #606060;
-  top: 270px;
+  top: 230px;
   width: 90%; /* 전체 컨테이너 대비 너비 설정 */
   max-width: 70%; /* 최대 너비 제한 */
   margin: 0 auto; /* 좌우 중앙 정렬 */

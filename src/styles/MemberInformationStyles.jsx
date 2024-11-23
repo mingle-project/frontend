@@ -5,7 +5,7 @@ export const Container = styled.div`
   position: relative;
   margin: 0 auto;
   width: 393px;
-  height: 100vh;
+  height: 852px;
   min-height: 100vh;
   padding: 0;
   box-sizing: border-box;
@@ -112,7 +112,7 @@ export const GroupName = styled.div`
   padding: 0;
 
   margin-top: 10px;
-  font-family: 'MaplestoryOTFBold';
+  font-family: "MaplestoryOTFBold";
 
   font-size: 26px;
 `;
@@ -134,9 +134,8 @@ export const GroupChange = styled.div`
 `;
 
 export const Intimacy = styled.div`
-
   margin-top: 15px;
-  font-family: 'MaplestoryOTFBold';
+  font-family: "MaplestoryOTFBold";
 
   font-size: 20px;
 `;
@@ -213,10 +212,8 @@ export const IdInformation = styled.div`
 `;
 
 export const GroupInformation = styled.div`
-
   margin-top: 45px;
-  font-family: 'MaplestoryOTFBold';
-
+  font-family: "MaplestoryOTFBold";
 `;
 
 export const GroupInformation2 = styled.div`
@@ -241,9 +238,8 @@ export const GroupInformationChange = styled.div`
 `;
 
 export const GenderInformation = styled.div`
-
   margin-top: 25px;
-  font-family: 'MaplestoryOTFBold';
+  font-family: "MaplestoryOTFBold";
 
   font-size: 20px;
   display: flex;
@@ -260,9 +256,8 @@ export const SexInformation = styled.div`
 `;
 
 export const Age = styled.div`
-
   margin-top: 25px;
-  font-family: 'MaplestoryOTFBold';
+  font-family: "MaplestoryOTFBold";
 
   font-size: 20px;
   display: flex;
@@ -279,9 +274,8 @@ export const AgeInformation = styled.div`
 `;
 
 export const Group = styled.div`
-
   margin-top: 25px;
-  font-family: 'MaplestoryOTFBold';
+  font-family: "MaplestoryOTFBold";
 
   font-size: 20px;
   display: flex;
@@ -290,13 +284,12 @@ export const Group = styled.div`
 `;
 
 export const GroupMember = styled.div`
-
-  font-family: 'MaplestoryOTFBold';
+  font-family: "MaplestoryOTFBold";
   margin-right: 30px;
 `;
 
 export const GroupMemberName = styled.div`
-  font-family: 'MaplestoryOTFBold';
+  font-family: "MaplestoryOTFBold";
   margin-right: 30px;
 `;
 
@@ -305,10 +298,9 @@ export const GroupMemberId = styled.div`
 `;
 
 export const Footer = styled.div`
-
   margin-top: 35px;
   margin-bottom: 25px;
-  font-family: 'MaplestoryOTFBold';
+  font-family: "MaplestoryOTFBold";
   font-size: 20px;
 `;
 

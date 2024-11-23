@@ -17,8 +17,7 @@ const Main = () => {
   const [creatingStar, setCreatingStar] = useState(false);
   const [todayQuestion, setTodayQuestion] = useState("");
   const [showStartQuestion, setShowStartQuestion] = useState(false);
-  const [questionMessage, setQuestionMessage] =
-    useState("별을 눌러 질문을 시작하세요.");
+  const [questionMessage, setQuestionMessage] = useState("");
   const [isQuestionStarted, setIsQuestionStarted] = useState(false); // 질문 시작 여부 상태
 
   const navigate = useNavigate();
@@ -89,8 +88,9 @@ const Main = () => {
 
       if (response.status === 200) {
         setShowStartQuestion(false);
-        setQuestionMessage("별을 눌러 질문을 시작하세요.");
+
         setIsQuestionStarted(true);
+        setQuestionMessage(" 별을 눌러 질문을 시작하세요! ");
       } else {
         console.error("질문 시작 실패");
       }
@@ -165,7 +165,12 @@ const Main = () => {
 
         {showStartQuestion && (
           <div>
-            <button onClick={handleStartQuestion}>질문 시작하기</button>
+            <button
+              onClick={handleStartQuestion}
+              style={{ marginBottom: "10px" }}
+            >
+              질문 시작하기
+            </button>
           </div>
         )}
 
