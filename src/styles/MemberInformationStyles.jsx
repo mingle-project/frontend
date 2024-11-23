@@ -5,7 +5,7 @@ export const Container = styled.div`
   position: relative;
   margin: 0 auto;
   width: 393px;
-  height: 100vh;
+  height: 852px;
   min-height: 100vh;
   padding: 0;
   box-sizing: border-box;
