@@ -4,7 +4,7 @@ export const Container = styled.div`
   position: relative;
   margin: 0 auto;
   width: 393px;
-  height: 852px;
+  height: 100vh;
   min-height: 100vh;
   background-color: #150f69;
   padding: 0;
