@@ -80,7 +80,7 @@ const Login = () => {
         </p>
       </L.IsItFirst>
 
-      <L.LandingImg style={{ bottom: "200px" }}>
+      <L.LandingImg style={{ bottom: "10%" }}>
         <L.Stars>
           <img id="Ministarpink" src={Ministarpink} />
           <img id="Ministaryellow" src={Ministaryellow} />
