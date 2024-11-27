@@ -1,32 +1,32 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { useSelector } from "react-redux";
-import * as M from "../styles/MemberInformationStyles";
-import Arrow from "../assets/arrow.png";
-import Set from "../assets/set.png";
-import MingleLogo from "../assets/minglelogowhite1.png";
-import Pencil from "../assets/pencil.png";
-import Help from "../assets/help.png";
-import Computer from "../assets/computer.png";
-import Logout from "../assets/logout.png";
-import Delete from "../assets/delete.png";
-import Line from "../assets/line.png";
-import { useDispatch } from "react-redux";
-import { logout } from "../userSlice";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
+import * as M from '../styles/MemberInformationStyles';
+import Arrow from '../assets/arrow.png';
+import Set from '../assets/set.png';
+import MingleLogo from '../assets/minglelogowhite1.png';
+import Pencil from '../assets/pencil.png';
+import Help from '../assets/help.png';
+import Computer from '../assets/computer.png';
+import Logout from '../assets/logout.png';
+import Delete from '../assets/delete.png';
+import Line from '../assets/line.png';
+import { useDispatch } from 'react-redux';
+import { logout } from '../userSlice';
 
 const MemberInformation = () => {
   const [isInvitePopupOpen, setIsInvitePopupOpen] = useState(false);
   const [isGroupPopupOpen, setIsGroupPopupOpen] = useState(false);
   const [isNamePopupOpen, setIsNamePopupOpen] = useState(false);
-  const [newNickname, setNewNickname] = useState("");
+  const [newNickname, setNewNickname] = useState('');
   const [nicknameError, setNicknameError] = useState(null);
   const [isSetPopupOpen, setIsSetPopupOpen] = useState(false);
   const [isOutPopupOpen, setIsOutPopupOpen] = useState(false);
   const [isDeletePopupOpen, setIsDeletePopupOpen] = useState(false);
   const [isGalaxyPopupOpen, setIsGalaxyPopupOpen] = useState(false);
-  const [groupNameInput, setGroupNameInput] = useState("");
-  const [groupCode, setGroupCode] = useState("");
+  const [groupNameInput, setGroupNameInput] = useState('');
+  const [groupCode, setGroupCode] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -52,7 +52,7 @@ const MemberInformation = () => {
 
   const handleNameClosePopup = () => {
     setIsNamePopupOpen(false);
-    setNewNickname("");
+    setNewNickname('');
     setNicknameError(null);
   };
 
@@ -71,12 +71,12 @@ const MemberInformation = () => {
   const handleLogout = () => {
     dispatch(logout());
 
-    navigate("/login");
+    navigate('/login');
   };
 
   const handleNicknameSubmit = async () => {
     if (!newNickname.trim()) {
-      setNicknameError("닉네임을 입력해주세요.");
+      setNicknameError('닉네임을 입력해주세요.');
       return;
     }
 
@@ -86,18 +86,18 @@ const MemberInformation = () => {
         { nickname: newNickname },
         { headers: { Authorization: token } }
       );
-      alert("닉네임이 성공적으로 변경되었습니다!");
+      alert('닉네임이 성공적으로 변경되었습니다!');
       setUserData((prev) => ({ ...prev, nickname: response.data.nickname }));
       handleNameClosePopup();
     } catch (err) {
-      console.error("Nickname update error:", err.response);
-      setNicknameError("닉네임 변경에 실패했습니다. 다시 시도해주세요.");
+      console.error('Nickname update error:', err.response);
+      setNicknameError('닉네임 변경에 실패했습니다. 다시 시도해주세요.');
     }
   };
 
   const handleGroupNameSubmit = async () => {
     if (!newNickname.trim()) {
-      setNicknameError("그룹명을 입력해주세요.");
+      setNicknameError('그룹명을 입력해주세요.');
       return;
     }
 
@@ -107,22 +107,22 @@ const MemberInformation = () => {
         { name: newNickname },
         { headers: { Authorization: token } }
       );
-      alert("그룹명이 성공적으로 변경되었습니다!");
+      alert('그룹명이 성공적으로 변경되었습니다!');
       setProfileData((prev) => ({ ...prev, name: response.data.name }));
       setIsEditing(false);
     } catch (err) {
-      console.error("Group name update error:", err.response);
-      setNicknameError("그룹명 변경에 실패했습니다. 다시 시도해주세요.");
+      console.error('Group name update error:', err.response);
+      setNicknameError('그룹명 변경에 실패했습니다. 다시 시도해주세요.');
     }
   };
 
   const handleGalaxyInfoSubmit = async () => {
-    console.log("Galaxy ID:", galaxyId);
-    console.log("Current token:", token);
+    console.log('Galaxy ID:', galaxyId);
+    console.log('Current token:', token);
     const galaxyOptions = {
-      gender: profileData.gender || "",
-      age: profileData.age || "",
-      relationship: profileData.relationship || "",
+      gender: profileData.gender || '',
+      age: profileData.age || '',
+      relationship: profileData.relationship || '',
     };
 
     try {
@@ -133,7 +133,7 @@ const MemberInformation = () => {
           headers: { Authorization: token },
         }
       );
-      alert(response.data.message || "그룹 정보가 성공적으로 수정되었습니다!");
+      alert(response.data.message || '그룹 정보가 성공적으로 수정되었습니다!');
       setProfileData((prev) => ({
         ...prev,
         name: response.data.name || prev.name,
@@ -142,14 +142,14 @@ const MemberInformation = () => {
       handleGalaxyPopupClose();
     } catch (err) {
       console.error(
-        "Galaxy info update error:",
+        'Galaxy info update error:',
         err.response?.data || err.message
       );
       if (err.response?.status == 403) {
         console.log(galaxyId);
-        alert("권한이 없습니다. 다시 확인해주세요.");
+        alert('권한이 없습니다. 다시 확인해주세요.');
       } else {
-        alert("그룹 정보 수정에 실패했습니다. 다시 시도해주세요.");
+        alert('그룹 정보 수정에 실패했습니다. 다시 시도해주세요.');
       }
     }
   };
@@ -165,8 +165,8 @@ const MemberInformation = () => {
     try {
       const groupId = galaxyId;
       const userId = userData.user_id;
-      console.log("Group ID:", groupId);
-      console.log("User ID:", userId);
+      console.log('Group ID:', groupId);
+      console.log('User ID:', userId);
 
       const response = await axios.delete(
         //`/api/groups/${groupId}/members/${userId}`,
@@ -176,50 +176,50 @@ const MemberInformation = () => {
         }
       );
 
-      alert(response.data.message || "그룹에서 탈퇴했습니다.");
+      alert(response.data.message || '그룹에서 탈퇴했습니다.');
 
-      navigate("/login");
+      navigate('/login');
     } catch (err) {
       console.error(
-        "Group leave error details:",
+        'Group leave error details:',
         err.response?.data || err.message
       );
 
       if (err.response?.status === 403) {
-        alert("그룹 탈퇴 권한이 없습니다. 다시 확인해주세요.");
+        alert('그룹 탈퇴 권한이 없습니다. 다시 확인해주세요.');
       } else {
-        alert("그룹 탈퇴에 실패했습니다. 다시 시도해주세요.");
+        alert('그룹 탈퇴에 실패했습니다. 다시 시도해주세요.');
       }
     }
   };
 
   const handleGroupDelete = async () => {
     if (groupNameInput !== profileData.name) {
-      alert("입력한 그룹 이름이 정확하지 않습니다.");
+      alert('입력한 그룹 이름이 정확하지 않습니다.');
       return;
     }
 
     try {
       const groupId = galaxyId;
-      console.log("Group ID to delete:", groupId);
+      console.log('Group ID to delete:', groupId);
 
       const response = await axios.delete(`/api/galaxy/me`, {
         headers: { Authorization: token },
       });
 
-      alert(response.data.message || "그룹이 성공적으로 삭제되었습니다.");
+      alert(response.data.message || '그룹이 성공적으로 삭제되었습니다.');
 
-      navigate("/main");
+      navigate('/main');
     } catch (err) {
       console.error(
-        "Group delete error details:",
+        'Group delete error details:',
         err.response?.data || err.message
       );
 
       if (err.response?.status === 403) {
-        alert("그룹 삭제 권한이 없습니다. 다시 확인해주세요.");
+        alert('그룹 삭제 권한이 없습니다. 다시 확인해주세요.');
       } else {
-        alert("그룹 삭제에 실패했습니다. 다시 시도해주세요.");
+        alert('그룹 삭제에 실패했습니다. 다시 시도해주세요.');
       }
     }
   };
@@ -251,7 +251,7 @@ const MemberInformation = () => {
   //const navigate = useNavigate();
 
   const handleIntroductionClick = () => {
-    navigate("/introductiontransition");
+    navigate('/introductiontransition');
   };
 
   const handleMainClick = () => {
@@ -266,7 +266,7 @@ const MemberInformation = () => {
 
   const token = useSelector((state) => state.user.token);
   const galaxyId = useSelector((state) => state.user.galaxy_id);
-  console.log("Current token:", token);
+  console.log('Current token:', token);
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -277,7 +277,7 @@ const MemberInformation = () => {
         setProfileData(response.data || { user: [], user: [] });
         setIsLoading(false);
       } catch (err) {
-        console.error("Full error response:", err.response);
+        console.error('Full error response:', err.response);
         setError(err.message);
         setIsLoading(false);
       }
@@ -296,7 +296,7 @@ const MemberInformation = () => {
         console.log(response.data);
         setUserData(response.data);
       } catch (err) {
-        console.error("Full error response:", err.response);
+        console.error('Full error response:', err.response);
         setError(err.message);
         setIsLoading(false);
       }
@@ -315,7 +315,7 @@ const MemberInformation = () => {
         });
         setGroupCode(response.data); // API에서 받은 코드 설정
       } catch (error) {
-        console.error("Failed to fetch group code", error);
+        console.error('Failed to fetch group code', error);
       }
     };
 
@@ -327,10 +327,10 @@ const MemberInformation = () => {
     navigator.clipboard
       .writeText(groupCode)
       .then(() => {
-        alert("그룹코드가 복사되었습니다!");
+        alert('그룹코드가 복사되었습니다!');
       })
       .catch(() => {
-        alert("코드 복사에 실패했습니다. 다시 시도해주세요.");
+        alert('코드 복사에 실패했습니다. 다시 시도해주세요.');
       });
   };
 
@@ -343,7 +343,7 @@ const MemberInformation = () => {
         console.log(response.data);
         setUserData(response.data);
       } catch (err) {
-        console.error("Full error response:", err.response);
+        console.error('Full error response:', err.response);
         setError(err.message);
         setIsLoading(false);
       }
@@ -397,11 +397,9 @@ const MemberInformation = () => {
               <p>닉네임</p>
             </M.NickName>
             <M.MemberName>
-              {/* <p>수연</p> */}
-
               {userData && userData.nickname
                 ? userData.nickname
-                : "No members available"}
+                : 'No members available'}
             </M.MemberName>
             <M.Change onClick={handleNameClick}>
               <img id="Pencil" src={Pencil} />
@@ -414,7 +412,7 @@ const MemberInformation = () => {
             <M.IdInformation>
               {userData && userData.username
                 ? userData.username
-                : "No members available"}
+                : 'No members available'}
             </M.IdInformation>
           </M.Id>
         </M.User>
@@ -437,13 +435,13 @@ const MemberInformation = () => {
             <M.GroupMember>멤버</M.GroupMember>
             <M.GroupMemberName>
               {profileData.users && profileData.users.length > 0
-                ? profileData.users.map((user) => user.nickname).join(", ")
-                : "No members available"}
+                ? profileData.users.map((user) => user.nickname).join(', ')
+                : 'No members available'}
             </M.GroupMemberName>
             <M.GroupMemberId>
               {profileData.users && profileData.users.length > 0
-                ? profileData.users.map((user) => user.username).join(", ")
-                : "No members available"}
+                ? profileData.users.map((user) => user.username).join(', ')
+                : 'No members available'}
             </M.GroupMemberId>
           </M.Group>
         </M.GroupInformation>
@@ -562,7 +560,7 @@ const MemberInformation = () => {
                     handleGroupNameSubmit();
                   }}
                   onKeyDown={(e) => {
-                    if (e.key === "Enter") {
+                    if (e.key === 'Enter') {
                       e.preventDefault();
                       setNewNickname(e.target.textContent);
                       handleGroupNameSubmit();
@@ -570,11 +568,11 @@ const MemberInformation = () => {
                   }}
                   autoFocus
                 >
-                  {profileData.name || "그룹명을 입력하세요"}
+                  {profileData.name || '그룹명을 입력하세요'}
                 </p>
               ) : (
                 <p onClick={() => setIsEditing(true)}>
-                  {profileData.name || "그룹명을 입력하세요"}
+                  {profileData.name || '그룹명을 입력하세요'}
                 </p>
               )}
             </M.GroupPopupName>
@@ -602,7 +600,7 @@ const MemberInformation = () => {
                     setIsEditing(false);
                   }}
                   onKeyDown={(e) => {
-                    if (e.key === "Enter") {
+                    if (e.key === 'Enter') {
                       e.preventDefault();
                       setNewNickname(e.target.textContent);
                       handleNicknameSubmit();
@@ -613,13 +611,13 @@ const MemberInformation = () => {
                 >
                   {userData && userData.nickname
                     ? userData.nickname
-                    : "No members available"}
+                    : 'No members available'}
                 </p>
               ) : (
                 <p onClick={() => setIsEditing(true)}>
                   {userData && userData.nickname
                     ? userData.nickname
-                    : "No members available"}
+                    : 'No members available'}
                 </p>
               )}
             </M.NamePopupName>
@@ -642,9 +640,9 @@ const MemberInformation = () => {
               <div>
                 <strong>성별: </strong>
                 <select
-                  value={profileData.gender || ""}
+                  value={profileData.gender || ''}
                   onChange={(e) =>
-                    handleGalaxyFieldChange("gender", e.target.value)
+                    handleGalaxyFieldChange('gender', e.target.value)
                   }
                 >
                   <option value="">선택</option>
@@ -657,9 +655,9 @@ const MemberInformation = () => {
               <div>
                 <strong>연령대: </strong>
                 <select
-                  value={profileData.age || ""}
+                  value={profileData.age || ''}
                   onChange={(e) =>
-                    handleGalaxyFieldChange("age", e.target.value)
+                    handleGalaxyFieldChange('age', e.target.value)
                   }
                 >
                   <option value="">선택</option>
@@ -673,9 +671,9 @@ const MemberInformation = () => {
               <div>
                 <strong>친밀도: </strong>
                 <select
-                  value={profileData.relationship || ""}
+                  value={profileData.relationship || ''}
                   onChange={(e) =>
-                    handleGalaxyFieldChange("relationship", e.target.value)
+                    handleGalaxyFieldChange('relationship', e.target.value)
                   }
                 >
                   <option value="">선택</option>

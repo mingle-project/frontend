@@ -5,7 +5,7 @@ export const Container = styled.div`
   display: block;
   margin: 0 auto;
   width: 393px;
-  height: 852px;
+  height: 100vh;
   overflow: hidden;
   margin-top: 0px;
   background-color: #f9f9f9;
@@ -28,17 +28,19 @@ export const Backdrop = styled.div`
 `;
 export const Logo = styled.div`
   #LogoImg {
-    margin-top: 40px;
+    margin-top: 10%;
+    height: 60%;
   }
 `;
 export const Welecome = styled.div`
   margin-top: 10px;
 `;
 export const LoginBtn = styled.div`
-  margin-top: 15px;
+  margin-top: 5%;
+  height: 5%;
 `;
 export const GroupingBtn = styled.div`
-  margin-top: 15px;
+  margin-top: 0.1rem;
 `;
 export const GroupingDetail = styled.div`
   z-index: 3;
@@ -246,6 +248,6 @@ export const Stars = styled.div`
 `;
 export const LandingImg = styled.div`
   position: absolute;
-  bottom: 280px;
+  bottom: 30%;
   height: 50px;
 `;

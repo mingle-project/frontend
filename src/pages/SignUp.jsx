@@ -101,7 +101,7 @@ const SignUp = () => {
         </p>
       </L.IsItFirst>
 
-      <L.LandingImg style={{ bottom: "-150px" }}>
+      <L.LandingImg style={{ bottom: "10%" }}>
         <L.Stars>
           <img id="Ministarpink" src={Ministarpink} />
           <img id="Ministaryellow" src={Ministaryellow} />

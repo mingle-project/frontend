@@ -5,7 +5,7 @@ export const Container = styled.div`
   display: block;
   margin: 0 auto;
   width: 393px;
-  height: 852px;
+  height: 100vh;
   overflow: hidden;
   margin-top: 0px;
   background-color: #f9f9f9;

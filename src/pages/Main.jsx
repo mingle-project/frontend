@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { main } from "../userSlice";
 
 const Main = () => {
-  const [point, setPoint] = useState(0);
+  const [point, setPoint] = useState(100);
   const [image, setImage] = useState("");
   const [creatingStar, setCreatingStar] = useState(false);
   const [todayQuestion, setTodayQuestion] = useState("");

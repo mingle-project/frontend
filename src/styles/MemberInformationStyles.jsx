@@ -5,7 +5,7 @@ export const Container = styled.div`
   position: relative;
   margin: 0 auto;
   width: 393px;
-  height: 852px;
+  height: 100vh;
   min-height: 100vh;
   padding: 0;
   box-sizing: border-box;
@@ -144,9 +144,8 @@ export const User = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  text-align: center;
+  /*text-align: center; */
   margin-top: 20px;
   width: 300px;
   height: 120px;
@@ -165,26 +164,26 @@ export const Name = styled.div`
   font-family: 'MaplestoryOTFBold';
   font-size: 28px;
   margin-bottom: 10px;
+  margin-left: 70px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 10px;
+  justify-content: left;
+  align-items: left;
+  text-align: left;
 `;
 
 export const NickName = styled.div`
   font-family: 'MaplestoryOTFBold';
   font-size: 20px;
-  margin-right: 40px;
+  margin-right: 20px;
 `;
 
 export const MemberName = styled.div`
   font-family: 'MaplestoryOTFBold';
   font-size: 20px;
+  margin-right: 5px;
 `;
 
 export const Change = styled.div`
-  margin-top: 2px;
   font-family: 'MaplestoryOTFBold';
   image {
     width: 6px;
@@ -197,14 +196,15 @@ export const Id = styled.div`
   font-family: 'MaplestoryOTFBold';
   font-size: 20px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 45px;
+  justify-content: left;
+  align-items: left;
+  text-align: left;
 `;
 
 export const IdTitle = styled.div`
   font-family: 'MaplestoryOTFBold';
+  margin-right: 20px;
+  margin-left: 70px;
 `;
 
 export const IdInformation = styled.div`
@@ -280,7 +280,6 @@ export const Group = styled.div`
   font-size: 20px;
   display: flex;
   text-align: left;
-  gap: 10px;
 `;
 
 export const GroupMember = styled.div`
@@ -290,7 +289,7 @@ export const GroupMember = styled.div`
 
 export const GroupMemberName = styled.div`
   font-family: 'MaplestoryOTFBold';
-  margin-right: 30px;
+  margin-right: 20px;
 `;
 
 export const GroupMemberId = styled.div`
