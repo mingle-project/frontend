@@ -31,7 +31,7 @@ export const Backdrop = styled.div`
 export const Header = styled.div`
   position: relative;
   margin: 0;
-  margin-top: -10px;
+  margin-top: 10px;
   width: 393px;
   padding: 0;
   box-sizing: border-box;

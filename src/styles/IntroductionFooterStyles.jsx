@@ -28,7 +28,4 @@ export const Earth = styled.div`
   margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
-  img {
-    margin-top: -3%;
-  }
 `;

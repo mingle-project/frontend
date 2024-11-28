@@ -322,7 +322,6 @@ const MemberInformation = () => {
     fetchGroupCode();
   }, [token]);
 
-  // 그룹 코드 복사 기능
   const handleCopyCode = () => {
     navigator.clipboard
       .writeText(groupCode)

@@ -10,14 +10,14 @@ const IntroductionTransition = () => {
 
   const handleNextPage = () => {
     if (currentPage < 2) {
-      setCurrentPage((prev) => prev + 1); // 다음 페이지로 이동
+      setCurrentPage((prev) => prev + 1);
     }
   };
 
   return (
     <Its.Container
       onClick={(e) => {
-        e.stopPropagation(); // 이벤트 버블링 방지
+        e.stopPropagation();
         handleNextPage();
       }}
     >
