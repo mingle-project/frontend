@@ -3,7 +3,7 @@ import { navigate, useNavigate } from "react-router-dom";
 import * as L from "../styles/LandingStyles";
 import LogoImg from "../assets/logofinal.svg";
 import LoginBtn from "../assets/loginbtn.svg";
-import Globe from "../assets/globe.svg";
+import Globe from "../assets/globe2.svg";
 import Ministarpink from "../assets/ministarpink.png";
 import Ministaryellow from "../assets/ministaryellow.png";
 import Ministarneon from "../assets/ministary_green.png";
@@ -24,7 +24,6 @@ const Landing = () => {
       <L.Logo>
         <img id="LogoImg" src={LogoImg} />
       </L.Logo>
-
       <L.LoginBtn onClick={handleLoginClick}>
         <img id="LoginBtn" src={LoginBtn} />
       </L.LoginBtn>
@@ -43,7 +42,7 @@ const Landing = () => {
           <img id="Ministargreen" src={Ministargreen} />
           <img id="Ministarblue" src={Ministarblue} />
         </L.Stars>
-        <img src={Globe} />
+        <img id="globe" src={Globe} />
       </L.LandingImg>
     </L.Container>
   );

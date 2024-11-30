@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import * as L from "../styles/LandingStyles";
 import LogoImg from "../assets/logofinal.svg";
 import LoginBtn from "../assets/loginbtn.svg";
-import Globe from "../assets/globe.svg";
+import Globe from "../assets/globe2.svg";
 import Ministarpink from "../assets/ministarpink.png";
 import Ministaryellow from "../assets/ministaryellow.png";
 import Ministarneon from "../assets/ministary_green.png";
@@ -80,7 +80,7 @@ const Login = () => {
         </p>
       </L.IsItFirst>
 
-      <L.LandingImg style={{ bottom: "10%" }}>
+      <L.LandingImg style={{ bottom: "-13vh" }}>
         <L.Stars>
           <img id="Ministarpink" src={Ministarpink} />
           <img id="Ministaryellow" src={Ministaryellow} />
