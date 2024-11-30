@@ -30,9 +30,9 @@ export const Backdrop = styled.div`
 `;
 export const Logo = styled.div`
   position: relative;
-  margin: 10vh 0 0 0;
+  margin: 5vh 0 0 0;
   #LogoImg {
-    height: 22vh;
+    height: 25vh;
   }
 `;
 export const Welecome = styled.div`
@@ -41,10 +41,10 @@ export const Welecome = styled.div`
 export const LoginBtn = styled.div`
   margin-top: 10px;
   #LoginBtn {
-    height: 4.5vh;
+    height: 5vh;
   }
   #SignUpBtn {
-    height: 4.5vh;
+    height: 5vh;
   }
 `;
 export const IsItFirst = styled.div`
@@ -191,7 +191,6 @@ export const LoginForm = styled.div`
   margin-top: 10px;
   .userlogin {
     display: flex;
-
     border-radius: 20px;
     border: 2px solid #606060;
     background: var(--ff, #fff);
@@ -199,7 +198,7 @@ export const LoginForm = styled.div`
     padding-left: 15px;
     align-items: center;
     height: 4.5vh;
-    max-width: 200px;
+    width: 50vw;
   }
   img {
     height: 3vh;
