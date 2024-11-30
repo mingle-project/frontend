@@ -2,9 +2,10 @@ import { styled } from "styled-components";
 
 export const Container = styled.div`
   position: relative;
-  display: block;
+  display: flex;
   margin: 0 auto;
-  width: 393px;
+  max-width: 430px;
+  width: 100vw;
   height: 100vh;
   overflow: hidden;
   margin-top: 0px;
@@ -12,8 +13,9 @@ export const Container = styled.div`
   min-height: 100vh;
   padding: 0;
   box-sizing: border-box;
-  justify-content: center;
+  align-items: center;
   text-align: center;
+  flex-direction: column;
 `;
 export const Backdrop = styled.div`
   position: absolute;
@@ -27,21 +29,35 @@ export const Backdrop = styled.div`
   z-index: 2;
 `;
 export const Logo = styled.div`
+  position: relative;
+  margin: 10vh 0 0 0;
   #LogoImg {
-    margin-top: 10%;
-    height: 60%;
+    height: 22vh;
   }
 `;
 export const Welecome = styled.div`
   margin-top: 10px;
 `;
 export const LoginBtn = styled.div`
-  margin-top: 5%;
-  height: 5%;
+  margin-top: 10px;
+  #LoginBtn {
+    height: 4.5vh;
+  }
+  #SignUpBtn {
+    height: 4.5vh;
+  }
+`;
+export const IsItFirst = styled.div`
+  margin-top: 10px;
+  a {
+    color: #8086ff;
+    cursor: pointer;
+  }
 `;
 export const GroupingBtn = styled.div`
   margin-top: 0.1rem;
 `;
+
 export const GroupingDetail = styled.div`
   z-index: 3;
   position: absolute;
@@ -175,14 +191,18 @@ export const LoginForm = styled.div`
   margin-top: 10px;
   .userlogin {
     display: flex;
-    width: 236px;
-    height: 40px;
+
     border-radius: 20px;
     border: 2px solid #606060;
     background: var(--ff, #fff);
     text-align: left;
     padding-left: 15px;
     align-items: center;
+    height: 4.5vh;
+    max-width: 200px;
+  }
+  img {
+    height: 3vh;
   }
   input {
     border: none;
@@ -201,53 +221,68 @@ export const LoginForm = styled.div`
     background: none;
   }
 `;
-export const IsItFirst = styled.div`
-  margin-top: 10px;
-  a {
-    color: #8086ff;
-    cursor: pointer;
-  }
-`;
+
 export const Stars = styled.div`
   position: relative;
+  width: 100%;
   z-index: 2;
 
   img {
     margin: 0px;
+    max-width: 30px;
+    width: 7vw;
   }
   #Ministarpink {
     position: absolute;
-    bottom: 0;
-    left: 20px;
+    bottom: -2vh;
+    left: 10%;
+    transform: translateX(-50%);
   }
+
   #Ministaryellow {
     position: absolute;
-    bottom: 50px;
-    left: 70px;
+    bottom: 5vh;
+    left: 23%;
+    transform: translateX(-50%);
   }
+
   #Ministarneon {
     position: absolute;
-    bottom: 30px;
-    left: 140px;
+    bottom: 2vh;
+    left: 42%;
+    transform: translateX(-50%);
   }
+
   #Ministarred {
     position: absolute;
-    bottom: 60px;
-    left: 210px;
+    bottom: 7vh;
+    left: 59%;
+    transform: translateX(-50%);
   }
+
   #Ministargreen {
     position: absolute;
-    bottom: 20px;
-    right: 90px;
+    bottom: 1vh;
+    left: 73%;
+    transform: translateX(-50%);
   }
+
   #Ministarblue {
     position: absolute;
-    bottom: 40px;
-    right: 20px;
+    bottom: 4vh;
+    left: 90%;
+    transform: translateX(-50%);
   }
 `;
 export const LandingImg = styled.div`
   position: absolute;
-  bottom: 30%;
-  height: 50px;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  #globe {
+    height: 35vh;
+  }
 `;
